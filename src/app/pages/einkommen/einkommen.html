@@ -1,0 +1,57 @@
+<!--
+  Generated template for the EinkommenPage page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-navbar *navbar dark>
+  <ion-title>Einkommen</ion-title>
+</ion-navbar>
+
+<ion-content padding class="einkommen">
+    <form>
+        <p>
+            Hatten Sie letzten Monat ein Einkommen aus Erwerbstätigkeit (Job, Lehre etc.)?
+        </p>
+        <ion-segment favorite [(ngModel)]="hasJobIncome">
+            <ion-segment-button value="1">
+                Ja
+            </ion-segment-button>
+            <ion-segment-button value="0">
+                Nein
+            </ion-segment-button>
+        </ion-segment>
+
+        <div *ngIf="hasJobIncome == 0">
+            <p>
+                Hatten Sie letzten Monat ein anderes Einkommen (IV, ALV, UV/SUVA etc.)
+            </p>
+                <ion-segment favorite [(ngModel)]="hasOtherIncome">
+                <ion-segment-button value="1">
+                    Ja
+                </ion-segment-button>
+                <ion-segment-button value="0">
+                    Nein
+                </ion-segment-button>
+            </ion-segment>
+        </div>
+
+        <div *ngIf="haushaltGroesse == 1">
+        <p>Wie alt sind Sie?</p>
+        <ion-item>
+            <ion-label>Alter</ion-label>
+            <ion-select interface="action-sheet" [(ngModel)]="alter">
+            <ion-option value="1">18-25</ion-option>
+            <ion-option value="2">26-35</ion-option>
+            <ion-option value="3">36-45</ion-option>
+            <ion-option value="4">46-55</ion-option>
+            <ion-option value="5">56-64</ion-option>
+            </ion-select>
+        </ion-item>
+        </div >
+
+        <p *ngIf="alter > 1">
+        <button full round large favorite click="foo($event)">Weiter</button>
+        </p>
+    </form>
+</ion-content>
