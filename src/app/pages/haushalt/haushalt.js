@@ -1,6 +1,6 @@
 import {Page, NavController} from 'ionic-angular';
 import {EinkommenPage} from '../einkommen/einkommen';
-
+import {CaseService} from '../../services/case.service';
 /*
   Generated class for the HaushaltPage page.
 
@@ -9,15 +9,16 @@ import {EinkommenPage} from '../einkommen/einkommen';
 */
 @Page({
   templateUrl: 'build/pages/haushalt/haushalt.html',
-})
+});
 export class HaushaltPage {
 
   static get parameters() {
-    return [[NavController]];
+    return [[NavController], [CaseService]];
   }
 
-  constructor(nav) {
+  constructor(nav, caseService) {
     this.nav = nav;
+    this.case = caseService.getCase();
   }
 
   gotoIncome(event) {

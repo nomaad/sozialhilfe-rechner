@@ -26,7 +26,7 @@
             <p>Wie alt sind Sie?</p>
             <ion-item>
                 <ion-label>Alter</ion-label>
-                <ion-select interface="action-sheet" [(ngModel)]="alter">
+                <ion-select interface="action-sheet" [(ngModel)]="case.age">
                 <ion-option value="1">18-25</ion-option>
                 <ion-option value="2">26-35</ion-option>
                 <ion-option value="3">36-45</ion-option>
@@ -36,7 +36,7 @@
             </ion-item>
         </div >
 
-        <p *ngIf="alter > 1">
+        <p *ngIf="case.age > 1">
             <button full round large favorite (click)="gotoIncome($event)">Weiter</button>
         </p>
     </form>

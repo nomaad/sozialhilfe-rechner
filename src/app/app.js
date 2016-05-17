@@ -2,22 +2,25 @@ import {App, IonicApp, Platform, MenuController} from 'ionic-angular';
 import {StatusBar} from 'ionic-native';
 import {SozialhilfeRechner} from './pages/sozialhilfe-rechner/sozialhilfe-rechner';
 import {ListPage} from './pages/list/list';
+import {CaseService} from './services/case.service';
 
 
 @App({
   templateUrl: 'build/app.html',
-  config: {} // http://ionicframework.com/docs/v2/api/config/Config/
-})
+  config: {}, // http://ionicframework.com/docs/v2/api/config/Config/
+  providers: [CaseService]
+});
 class MyApp {
   static get parameters() {
     return [[IonicApp], [Platform], [MenuController]];
   }
 
-  constructor(app, platform, menu) {
+  constructor(app, platform, menu, caseService) {
     // set up our app
     this.app = app;
     this.platform = platform;
     this.menu = menu;
+    this.caseService = caseService;
     this.initializeApp();
 
     // set our app's pages
@@ -35,7 +38,7 @@ class MyApp {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       StatusBar.styleDefault();
-    });
+  })
   }
 
   openPage(page) {
