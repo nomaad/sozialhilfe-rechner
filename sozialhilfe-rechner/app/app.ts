@@ -1,15 +1,17 @@
 import {App, IonicApp, Platform} from 'ionic-angular';
 import {StatusBar} from 'ionic-native';
-import {GettingStartedPage} from './pages/getting-started/getting-started';
+import {SozialhilfeRechnerPage} from './pages/sozialhilfe-rechner/sozialhilfe-rechner';
 import {ListPage} from './pages/list/list';
+import {CaseService} from './services/case.service';
 
 
 @App({
   templateUrl: 'build/app.html',
-  config: {} // http://ionicframework.com/docs/v2/api/config/Config/
+  config: {}, // http://ionicframework.com/docs/v2/api/config/Config/
+  providers: [CaseService]
 })
 class MyApp {
-  rootPage: any = GettingStartedPage;
+  rootPage: any = SozialhilfeRechnerPage;
   pages: Array<{title: string, component: any}>
 
   constructor(private app: IonicApp, private platform: Platform) {
@@ -17,7 +19,7 @@ class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Getting Started', component: GettingStartedPage },
+      { title: 'Sozialhilfe Rechner', component: SozialhilfeRechnerPage },
       { title: 'List', component: ListPage }
     ];
 

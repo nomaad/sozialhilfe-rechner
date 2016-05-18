@@ -7,6 +7,25 @@
 // By default each design mode includes these shared imports.
 // App Shared Sass variables belong in app.variables.scss.
 
-@import "../pages/getting-started/getting-started";
+@import "../pages/sozialhilfe-rechner/sozialhilfe-rechner";
+@import "../pages/haushalt/haushalt.scss";
+@import "../pages/einkommen/einkommen.scss";
 
 @import "../pages/list/list";
+
+// Google Fonts
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+
+// Font Variables
+$montserrat: 'Montserrat', serif;
+
+h3{
+  text-align:center;
+}
+p {
+  margin: 20px 0;
+  line-height: 22px;
+  font-size: 14px;
+  font-family:$montserrat;
+  text-align:justify;
+}
