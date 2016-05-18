@@ -34,6 +34,6 @@
       "locator": "ios"
     }
   ],
-  "name": "Sozialhilfe Rechner",
+  "name": "sozialhilfe-rechner",
   "description": "App zur Berechnung des Anspruchs auf Sozialhilfe nach SKOS-Richtlinien."
 }
