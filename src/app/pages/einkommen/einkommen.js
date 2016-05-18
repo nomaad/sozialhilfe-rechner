@@ -19,4 +19,16 @@ export class EinkommenPage {
     this.nav = nav;
     this.case = caseService.getCase();
   }
+
+  showOtherIncome(){
+    return this.case.hasJobIncome == 0;
+  }
+
+  showNext(){
+    return (this.case.incomeComplete());
+  }
+
+  next(event) {
+    this.nav.pop();
+  }
 }

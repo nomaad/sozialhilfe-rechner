@@ -36,8 +36,8 @@
             </ion-item>
         </div>
 
-        <p *ngIf="showForwardButton()">
-            <button full round large favorite (click)="gotoIncome($event)">Weiter</button>
+        <p *ngIf="showNext()">
+            <button full round large favorite (click)="next($event)">Weiter</button>
         </p>
     </form>
 </ion-content>

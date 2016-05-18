@@ -24,6 +24,7 @@ export class HaushaltPage {
   validAge(){
     return (this.case.age != null && this.case.age > 1);
   }
+
   validHouseholdSize(){
     if(this.case.singleHousehold == 1){
       this.case.householdSize = 1;
@@ -31,11 +32,12 @@ export class HaushaltPage {
     }
     return false;
   }
-  showForwardButton(){
+
+  showNext(){
     return this.validAge() && this.validHouseholdSize();
   }
-  
-  gotoIncome(event) {
+
+  next(event) {
       this.nav.push(EinkommenPage);
   }
 }

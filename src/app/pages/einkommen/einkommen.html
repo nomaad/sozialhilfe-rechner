@@ -14,7 +14,7 @@
         <p>
             Hatten Sie letzten Monat ein Einkommen aus Erwerbstätigkeit (Job, Lehre etc.)?
         </p>
-        <ion-segment favorite [(ngModel)]="hasJobIncome">
+        <ion-segment favorite [(ngModel)]="case.hasJobIncome">
             <ion-segment-button value="1">
                 Ja
             </ion-segment-button>
@@ -23,11 +23,11 @@
             </ion-segment-button>
         </ion-segment>
 
-        <div *ngIf="hasJobIncome == 0">
+        <div *ngIf="showOtherIncome()">
             <p>
                 Hatten Sie letzten Monat ein anderes Einkommen (IV, ALV, UV/SUVA etc.)
             </p>
-                <ion-segment favorite [(ngModel)]="hasOtherIncome">
+                <ion-segment favorite [(ngModel)]="case.hasOtherIncome">
                 <ion-segment-button value="1">
                     Ja
                 </ion-segment-button>
@@ -51,8 +51,8 @@
         </ion-item>
         </div >
 
-        <p *ngIf="alter > 1">
-        <button full round large favorite click="foo($event)">Weiter</button>
+        <p *ngIf="showNext()">
+        <button full round large favorite click="next($event)">Weiter</button>
         </p>
     </form>
 </ion-content>
