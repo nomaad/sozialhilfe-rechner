@@ -25,7 +25,11 @@ export class HaushaltPage {
     return (this.case.age != null && this.case.age > 1);
   }
   validHouseholdSize(){
-    return this.case.singleHousehold == 1;
+    if(this.case.singleHousehold == 1){
+      this.case.householdSize = 1;
+      return true;
+    }
+    return false;
   }
   showForwardButton(){
     return this.validAge() && this.validHouseholdSize();

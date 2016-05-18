@@ -6,6 +6,7 @@ export class Case {
 
   constructor() {
     this.singleHousehold = null;
+    this.householdSize = 0;
     this.age = '';
   }
   /*
