@@ -9,8 +9,7 @@ import {CaseService} from '../../services/case.service';
 */
 @Page({
   templateUrl: 'build/pages/einkommen/einkommen.html',
-});
-
+})
 export class EinkommenPage {
   static get parameters() {
     return [[NavController], [CaseService]];

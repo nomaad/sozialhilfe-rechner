@@ -9,7 +9,7 @@ import {CaseService} from './services/case.service';
   templateUrl: 'build/app.html',
   config: {}, // http://ionicframework.com/docs/v2/api/config/Config/
   providers: [CaseService]
-});
+})
 class MyApp {
   static get parameters() {
     return [[IonicApp], [Platform], [MenuController]];

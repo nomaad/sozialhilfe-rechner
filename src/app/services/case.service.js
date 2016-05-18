@@ -7,7 +7,7 @@ import {Case} from '../models/case.model';
  See https://angular.io/docs/ts/latest/guide/dependency-injection.html
  for more info on providers and Angular 2 DI.
  */
-@Injectable();
+@Injectable()
 export class CaseService {
   constructor() {
     this.case = new Case()

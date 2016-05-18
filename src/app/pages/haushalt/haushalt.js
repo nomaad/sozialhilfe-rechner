@@ -9,7 +9,7 @@ import {CaseService} from '../../services/case.service';
 */
 @Page({
   templateUrl: 'build/pages/haushalt/haushalt.html',
-});
+})
 export class HaushaltPage {
 
   static get parameters() {

@@ -4,7 +4,7 @@ import {HaushaltPage} from '../haushalt/haushalt';
 
 @Page({
   templateUrl: 'build/pages/sozialhilfe-rechner/sozialhilfe-rechner.html'
-});
+})
 export class SozialhilfeRechner {
   static get parameters() {
       return [[NavController], [NavParams]];
