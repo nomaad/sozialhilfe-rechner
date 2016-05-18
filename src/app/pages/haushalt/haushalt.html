@@ -13,16 +13,16 @@
         <p>
             Wie viele Personen leben in Ihrem Haushalt?
         </p>
-        <ion-segment favorite [(ngModel)]="haushaltGroesse">
+        <ion-segment favorite [(ngModel)]="case.singleHousehold">
             <ion-segment-button value="1">
                 Eine
             </ion-segment-button>
-            <ion-segment-button value="2">
+            <ion-segment-button value="0">
                 Zwei oder mehr
             </ion-segment-button>
         </ion-segment>
 
-        <div *ngIf="haushaltGroesse == 1">
+        <div *ngIf="validHouseholdSize()">
             <p>Wie alt sind Sie?</p>
             <ion-item>
                 <ion-label>Alter</ion-label>
@@ -34,9 +34,9 @@
                 <ion-option value="5">56-64</ion-option>
                 </ion-select>
             </ion-item>
-        </div >
+        </div>
 
-        <p *ngIf="case.age > 1">
+        <p *ngIf="showForwardButton()">
             <button full round large favorite (click)="gotoIncome($event)">Weiter</button>
         </p>
     </form>

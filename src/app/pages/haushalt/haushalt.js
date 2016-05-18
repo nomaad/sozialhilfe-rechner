@@ -21,6 +21,16 @@ export class HaushaltPage {
     this.case = caseService.getCase();
   }
 
+  validAge(){
+    return (this.case.age != null && this.case.age > 1);
+  }
+  validHouseholdSize(){
+    return this.case.singleHousehold == 1;
+  }
+  showForwardButton(){
+    return this.validAge() && this.validHouseholdSize();
+  }
+  
   gotoIncome(event) {
       this.nav.push(EinkommenPage);
   }

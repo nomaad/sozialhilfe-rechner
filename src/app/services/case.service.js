@@ -1,12 +1,20 @@
 import {Injectable} from 'angular2/core';
 import 'rxjs/add/operator/map';
-import {Case} from '../models/case.model';
-/*
- Generated class for the Case provider.
 
- See https://angular.io/docs/ts/latest/guide/dependency-injection.html
- for more info on providers and Angular 2 DI.
- */
+
+export class Case {
+
+  constructor() {
+    this.singleHousehold = null;
+    this.age = '';
+  }
+  /*
+   avatarUrl(size: number = 100): string {
+   return `http://www.gravatar.com/avatar/${this.hash}?d=retro&s=${size}`
+   }
+   }*/
+}
+
 @Injectable()
 export class CaseService {
   constructor() {
