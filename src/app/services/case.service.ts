@@ -8,7 +8,11 @@ export class Case {
   age: string;
   hasJobIncome: number;
   hasOtherIncome: number;
-
+  hasWealth: number;
+  wealth: number;
+  hasVehicle: number;
+  vehicleValue: number;
+  
   constructor() {
 
   }

@@ -1,12 +1,8 @@
 import {Page, NavController} from 'ionic-angular';
 import {EinkommenPage} from '../einkommen/einkommen';
 import {CaseService, Case} from '../../services/case.service';
-/*
-  Generated class for the HaushaltPage page.
 
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
+
 @Page({
   templateUrl: 'build/pages/haushalt/haushalt.html',
 })
@@ -33,6 +29,10 @@ export class HaushaltPage {
     }
     return false;
   }
+
+
+// Blocks machen. zB age-block. dieser ist valid, wenn über 25 oder wenn unter und ausbildungsstatus erfasst wurde
+  //Im age-block gibt es also alters-select, sowie 1-2 controls zu erstausbildungssituation
 
   showNext(){
     return this.validAge() && this.validHouseholdSize();
