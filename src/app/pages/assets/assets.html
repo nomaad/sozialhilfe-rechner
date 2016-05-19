@@ -1,0 +1,57 @@
+<ion-navbar *navbar dark>
+  <ion-title>Vermögen</ion-title>
+</ion-navbar>
+
+<ion-content padding>
+    <form>
+        <div class="assets-block">
+            <p>
+                Besitzen Sie Vermögen (Privat- und Sparkonto, Wertschriften etc.)?
+            </p>
+            <ion-segment favorite [(ngModel)]="case.assets.hasAssets">
+                <ion-segment-button value="1">
+                    Ja
+                </ion-segment-button>
+                <ion-segment-button value="0">
+                    Nein
+                </ion-segment-button>
+            </ion-segment>
+            <div *ngIf="case.assets.hasAssets == 1">
+                <p>
+                    Wie viel Vermögen besitzen Sie insgesamt?
+                </p>
+                <ion-item>
+                    <ion-label floating>Vermögen in CHF</ion-label>
+                    <ion-input type="number" min="0" step="0.05" value="0" [(ngModel)]="case.assets.assetValue"></ion-input>
+                </ion-item>
+            </div>
+        </div>
+
+        <div class="car-block" *ngIf="case.assets.isAssetsValid()">
+            <p>
+                Besitzen Sie ein Auto oder ein anderes Fahrzeug?
+            </p>
+            <ion-segment favorite [(ngModel)]="case.assets.hasVehicle">
+                <ion-segment-button value="1">
+                    Ja
+                </ion-segment-button>
+                <ion-segment-button value="0">
+                    Nein
+                </ion-segment-button>
+            </ion-segment>
+            <div *ngIf="case.assets.hasVehicle == 1">
+                <p>
+                    Wie viel Wert hat Ihr Fahrzeug?
+                </p>
+                <ion-item>
+                    <ion-label floating>Fahrzeugwert in CHF</ion-label>
+                    <ion-input type="number" min="0" step="0.05" value="0" [(ngModel)]="case.assets.vehicleValue"></ion-input>
+                </ion-item>
+            </div>
+        </div>
+
+        <p *ngIf="case.assets.isValid()">
+        <button full round large favorite click="next($event)">Weiter</button>
+        </p>
+    </form>
+</ion-content>
