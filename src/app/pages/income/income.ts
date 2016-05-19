@@ -4,9 +4,9 @@ import {AssetsPage} from '../assets/assets';
 
 
 @Page({
-  templateUrl: 'build/pages/einkommen/einkommen.html',
+  templateUrl: 'build/pages/income/income.html',
 })
-export class EinkommenPage {
+export class IncomePage {
   case: Case;
 
   static get parameters() {
