@@ -4,14 +4,14 @@ import 'rxjs/add/operator/map';
 
 export class Case {
   household: Household;
-  wealth: Wealth;
+  assets: Assets;
   hasJobIncome: number;
   hasOtherIncome: number;
 
   
   constructor() {
     this.household = new Household();
-    this.wealth = new Wealth();
+    this.assets = new Assets();
   }
 
   incomeComplete(){
@@ -33,14 +33,14 @@ export class Household {
   age: string;
 }
 
-export class Wealth{
-  hasWealth: number;
-  wealth: number;
+export class Assets{
+  hasAssets: number;
+  assetValue: number;
   hasVehicle: number;
   vehicleValue: number;
 
-  isWealthValid(){
-    return this.hasWealth == 0 || (this.hasWealth == 1 && this.wealth > 0);
+  isAssetsValid(){
+    return this.hasAssets == 0 || (this.hasAssets == 1 && this.assetValue > 0);
   }
 
   isVehicleValid(){
@@ -48,7 +48,7 @@ export class Wealth{
   }
 
   isValid(){
-    return this.isWealthValid() && this.isVehicleValid();
+    return this.isAssetsValid() && this.isVehicleValid();
   }
 }
 

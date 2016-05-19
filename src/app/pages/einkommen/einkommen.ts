@@ -1,6 +1,6 @@
 import {Page, NavController} from 'ionic-angular';
 import {CaseService, Case} from '../../services/case.service';
-import {WealthPage} from '../wealth/wealth';
+import {AssetsPage} from '../assets/assets';
 
 
 @Page({
@@ -27,6 +27,6 @@ export class EinkommenPage {
   }
 
   next(event) {
-    this.nav.push(WealthPage);
+    this.nav.push(AssetsPage);
   }
 }
