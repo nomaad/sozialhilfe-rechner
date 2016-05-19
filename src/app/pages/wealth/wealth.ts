@@ -19,11 +19,6 @@ export class WealthPage {
 
   // Blocks machen. zB age-block. dieser ist valid, wenn über 25 oder wenn unter und ausbildungsstatus erfasst wurde
   //Im age-block gibt es also alters-select, sowie 1-2 controls zu erstausbildungssituation
-
-  // TODO: move to model
-  wealthComplete(){
-    return this.case.hasWealth == 0 || (this.case.hasWealth == 1 && this.case.wealth >= 0);
-  }
   
   showNext(){
     return false;

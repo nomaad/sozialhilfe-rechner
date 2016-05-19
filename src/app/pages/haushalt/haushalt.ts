@@ -19,12 +19,12 @@ export class HaushaltPage {
   }
 
   validAge(){
-    return (this.case.age != null && this.case.age > 1);
+    return (this.case.household.age != null && this.case.household.age > 1);
   }
 
   validHouseholdSize(){
-    if(this.case.singleHousehold == 1){
-      this.case.householdSize = 1;
+    if(this.case.household.singleHousehold == 1){
+      this.case.household.householdSize = 1;
       return true;
     }
     return false;

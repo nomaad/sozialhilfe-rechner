@@ -3,18 +3,15 @@ import 'rxjs/add/operator/map';
 
 
 export class Case {
-  singleHousehold: number;
-  householdSize: number;
-  age: string;
+  household: Household;
+  wealth: Wealth;
   hasJobIncome: number;
   hasOtherIncome: number;
-  hasWealth: number;
-  wealth: number;
-  hasVehicle: number;
-  vehicleValue: number;
+
   
   constructor() {
-
+    this.household = new Household();
+    this.wealth = new Wealth();
   }
 
   incomeComplete(){
@@ -28,6 +25,31 @@ export class Case {
    return `http://www.gravatar.com/avatar/${this.hash}?d=retro&s=${size}`
    }
    }*/
+}
+
+export class Household {
+  singleHousehold: number;
+  householdSize: number;
+  age: string;
+}
+
+export class Wealth{
+  hasWealth: number;
+  wealth: number;
+  hasVehicle: number;
+  vehicleValue: number;
+
+  isWealthValid(){
+    return this.hasWealth == 0 || (this.hasWealth == 1 && this.wealth > 0);
+  }
+
+  isVehicleValid(){
+    return this.hasVehicle == 0 || (this.hasVehicle == 1 && this.vehicleValue > 0);
+  }
+
+  isValid(){
+    return this.isWealthValid() && this.isVehicleValid();
+  }
 }
 
 @Injectable()

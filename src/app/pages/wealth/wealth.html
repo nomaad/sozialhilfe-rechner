@@ -8,7 +8,7 @@
             <p>
                 Besitzen Sie Vermögen (Privat- und Sparkonto, Wertschriften etc.)?
             </p>
-            <ion-segment favorite [(ngModel)]="case.hasWealth">
+            <ion-segment favorite [(ngModel)]="case.wealth.hasWealth">
                 <ion-segment-button value="1">
                     Ja
                 </ion-segment-button>
@@ -16,22 +16,22 @@
                     Nein
                 </ion-segment-button>
             </ion-segment>
-            <div *ngIf="case.hasWealth == 1">
+            <div *ngIf="case.wealth.hasWealth == 1">
                 <p>
                     Wie viel Vermögen besitzen Sie insgesamt?
                 </p>
                 <ion-item>
                     <ion-label floating>Vermögen</ion-label>
-                    <ion-input type="number" min="0" step="0.05" value="0" [(ngModel)]="case.wealth"></ion-input>
+                    <ion-input type="number" min="0" step="0.05" value="0" [(ngModel)]="case.wealth.wealth"></ion-input>
                 </ion-item>
             </div>
         </div>
 
-        <div class="car-block" *ngIf="wealthComplete()">
+        <div class="car-block" *ngIf="case.wealth.isWealthValid()">
             <p>
                 Besitzen Sie ein Auto oder ein anderes Fahrzeug?
             </p>
-            <ion-segment favorite [(ngModel)]="case.hasVehicle">
+            <ion-segment favorite [(ngModel)]="case.wealth.hasVehicle">
                 <ion-segment-button value="1">
                     Ja
                 </ion-segment-button>
@@ -39,18 +39,18 @@
                     Nein
                 </ion-segment-button>
             </ion-segment>
-            <div *ngIf="case.hasVehicle == 1">
+            <div *ngIf="case.wealth.hasVehicle == 1">
                 <p>
                     Wie viel Wert hat Ihr Fahrzeug?
                 </p>
                 <ion-item>
                     <ion-label floating>Fahrzeugwert</ion-label>
-                    <ion-input type="number" min="0" step="0.05" value="0" [(ngModel)]="case.vehicleValue"></ion-input>
+                    <ion-input type="number" min="0" step="0.05" value="0" [(ngModel)]="case.wealth.vehicleValue"></ion-input>
                 </ion-item>
             </div>
         </div>
 
-        <p *ngIf="showNext()">
+        <p *ngIf="case.wealth.isValid()">
         <button full round large favorite click="next($event)">Weiter</button>
         </p>
     </form>
