@@ -1,5 +1,5 @@
 import {Page, NavController} from 'ionic-angular';
-import {CaseService, Case} from '../../services/case.service';
+import {CaseService, Case} from '../../providers/case.service';
 
 @Page({
   templateUrl: 'build/pages/assets/assets.html',

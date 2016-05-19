@@ -2,7 +2,7 @@ import {App, IonicApp, Platform} from 'ionic-angular';
 import {StatusBar} from 'ionic-native';
 import {SozialhilfeRechnerPage} from './pages/sozialhilfe-rechner/sozialhilfe-rechner';
 import {ListPage} from './pages/list/list';
-import {CaseService} from './services/case.service';
+import {CaseService} from './providers/case.service';
 
 
 @App({

@@ -1,11 +1,11 @@
 import {Page, NavController} from 'ionic-angular';
 import {IncomePage} from '../income/income';
-import {CaseService, Case} from '../../services/case.service';
+import {CaseService, Case} from '../../providers/case.service';
 
 @Page({
-  templateUrl: 'build/pages/haushalt/haushalt.html',
+  templateUrl: 'build/pages/household/household.html',
 })
-export class HaushaltPage {
+export class HouseholdPage {
   case: Case;
 
   static get parameters() {
@@ -18,12 +18,12 @@ export class HaushaltPage {
   }
 
   validAge(){
-    return (this.case.age != null && this.case.age > 1);
+    return (this.case.household.age != null && this.case.household.age > 1);
   }
 
   validHouseholdSize(){
-    if(this.case.singleHousehold == 1){
-      this.case.householdSize = 1;
+    if(this.case.household.singleHousehold == 1){
+      this.case.household.householdSize = 1;
       return true;
     }
     return false;
