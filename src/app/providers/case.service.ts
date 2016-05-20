@@ -5,21 +5,14 @@ import 'rxjs/add/operator/map';
 export class Case {
   household: Household;
   assets: Assets;
-  hasJobIncome: number;
-  hasOtherIncome: number;
-
+  income: Income;
   
   constructor() {
     this.household = new Household();
     this.assets = new Assets();
+    this.income = new Income();
   }
 
-  incomeComplete(){
-    if (this.hasJobIncome == 0 && this.hasOtherIncome == 0){
-      return true;
-    }
-    return false;
-  }
   /*
    avatarUrl(size: number = 100): string {
    return `http://www.gravatar.com/avatar/${this.hash}?d=retro&s=${size}`
@@ -31,6 +24,33 @@ export class Household {
   singleHousehold: number;
   householdSize: number;
   age: string;
+
+  isSizeValid(){
+    if(this.singleHousehold == 1){
+      this.householdSize = 1;
+      return true;
+    }
+    return false;
+  }
+}
+
+export class Income {
+  hasJobIncome: number;
+  jobIncomeValue: number;
+  hasSocialIncome: number;
+  socialIncomeValue: number;
+
+  isJobIncomeValid(){
+    return this.hasJobIncome == 0 || (this.hasJobIncome == 1 && this.jobIncomeValue > 0);
+  }
+
+  isSocialIncomeValid(){
+    return this.hasSocialIncome == 0 || (this.hasSocialIncome == 1 && this.socialIncomeValue > 0);
+  }
+
+  isValid(){
+    return this.isJobIncomeValid() && this.isSocialIncomeValid();
+  }
 }
 
 export class Assets{

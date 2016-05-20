@@ -4,23 +4,11 @@
 
 <ion-content padding class="income">
     <form>
-        <p>
-            Hatten Sie letzten Monat ein Einkommen aus Erwerbstätigkeit (Job, Lehre etc.)?
-        </p>
-        <ion-segment favorite [(ngModel)]="case.hasJobIncome">
-            <ion-segment-button value="1">
-                Ja
-            </ion-segment-button>
-            <ion-segment-button value="0">
-                Nein
-            </ion-segment-button>
-        </ion-segment>
-
-        <div *ngIf="showOtherIncome()">
+        <div class="block-income">
             <p>
-                Hatten Sie letzten Monat ein anderes Einkommen (IV, ALV, UV/SUVA etc.)
+                Hatten Sie letzten Monat ein Einkommen aus Erwerbstätigkeit (Job, Lehre etc.)?
             </p>
-                <ion-segment favorite [(ngModel)]="case.hasOtherIncome">
+            <ion-segment favorite [(ngModel)]="case.income.hasJobIncome">
                 <ion-segment-button value="1">
                     Ja
                 </ion-segment-button>
@@ -28,9 +16,41 @@
                     Nein
                 </ion-segment-button>
             </ion-segment>
+            <div *ngIf="case.income.hasJobIncome == 1">
+                <p>
+                    Wie viel Einkommen haben sie letzten Monat insgesamt erzielt?
+                </p>
+                <ion-item>
+                    <ion-label floating>Einkommen in CHF</ion-label>
+                    <ion-input type="number" min="0" step="0.05" value="0" [(ngModel)]="case.income.jobIncomeValue"></ion-input>
+                </ion-item>
+            </div>
         </div>
 
-        <p *ngIf="showNext()">
+        <div class="block-other-income" *ngIf="case.income.isJobIncomeValid()">
+            <p>
+                Hatten Sie letzten Monat ein Einkommen aus Sozialversicherungen (IV, ALV, UV/SUVA etc.) oder anderen Einkommensquellen?
+            </p>
+                <ion-segment favorite [(ngModel)]="case.income.hasSocialIncome">
+                <ion-segment-button value="1">
+                    Ja
+                </ion-segment-button>
+                <ion-segment-button value="0">
+                    Nein
+                </ion-segment-button>
+            </ion-segment>
+            <div *ngIf="case.income.hasSocialIncome == 1">
+                <p>
+                    Wie viel Einkommen aus Sozialversicherungen oder anderen Einkommensquellen haben Sie letzten Monat erzielt?
+                </p>
+                <ion-item>
+                    <ion-label floating>Total andere Einkommen in CHF</ion-label>
+                    <ion-input type="number" min="0" step="0.05" value="0" [(ngModel)]="case.income.socialIncomeValue"></ion-input>
+                </ion-item>
+            </div>
+        </div>
+
+        <p *ngIf="case.income.isValid()">
         <button full round large favorite (click)="next($event)">Weiter</button>
         </p>
     </form>

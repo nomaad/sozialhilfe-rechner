@@ -21,16 +21,8 @@ export class HouseholdPage {
     return (this.case.household.age != null && this.case.household.age > 1);
   }
 
-  validHouseholdSize(){
-    if(this.case.household.singleHousehold == 1){
-      this.case.household.householdSize = 1;
-      return true;
-    }
-    return false;
-  }
-
   showNext(){
-    return this.validAge() && this.validHouseholdSize();
+    return this.validAge() && this.case.household.isSizeValid();
   }
 
   next(event) {

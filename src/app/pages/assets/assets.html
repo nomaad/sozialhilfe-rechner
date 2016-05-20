@@ -4,7 +4,7 @@
 
 <ion-content padding>
     <form>
-        <div class="assets-block">
+        <div class="block-assets">
             <p>
                 Besitzen Sie Vermögen (Privat- und Sparkonto, Wertschriften etc.)?
             </p>
@@ -12,7 +12,7 @@
                 <ion-segment-button value="1">
                     Ja
                 </ion-segment-button>
-                <ion-segment-button value="0">
+                <ion-segment-button value="0"><!--TODO: Set assets.assetValue to 0 if this is selected! Do this for similar cases too.-->
                     Nein
                 </ion-segment-button>
             </ion-segment>
@@ -27,7 +27,7 @@
             </div>
         </div>
 
-        <div class="car-block" *ngIf="case.assets.isAssetsValid()">
+        <div class="block-car" *ngIf="case.assets.isAssetsValid()">
             <p>
                 Besitzen Sie ein Auto oder ein anderes Fahrzeug?
             </p>

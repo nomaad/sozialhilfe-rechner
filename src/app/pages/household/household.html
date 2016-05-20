@@ -10,19 +10,20 @@
 
 <ion-content padding class="household">
     <form>
-        <p>
-            Wie viele Personen leben in Ihrem Haushalt?
-        </p>
-        <ion-segment favorite [(ngModel)]="case.household.singleHousehold">
-            <ion-segment-button value="1">
-                Eine
-            </ion-segment-button>
-            <ion-segment-button value="0">
-                Zwei oder mehr
-            </ion-segment-button>
-        </ion-segment>
-
-        <div *ngIf="validHouseholdSize()">
+        <div class="block-size">
+            <p>
+                Wie viele Personen leben in Ihrem Haushalt?
+            </p>
+            <ion-segment favorite [(ngModel)]="case.household.singleHousehold">
+                <ion-segment-button value="1">
+                    Eine
+                </ion-segment-button>
+                <ion-segment-button value="0">
+                    Zwei oder mehr
+                </ion-segment-button>
+            </ion-segment>
+        </div>
+        <div class="block-age" *ngIf="case.household.isSizeValid()">
             <p>Wie alt sind Sie?</p>
             <ion-item>
                 <ion-label>Alter</ion-label>
