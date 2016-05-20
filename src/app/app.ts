@@ -1,3 +1,4 @@
+import {ViewChild} from '@angular/core';
 import {App, IonicApp, Platform} from 'ionic-angular';
 import {StatusBar} from 'ionic-native';
 import {SozialhilfeRechnerPage} from './pages/sozialhilfe-rechner/sozialhilfe-rechner';
@@ -8,7 +9,10 @@ import {CaseService} from './providers/case.service';
 @App({
   templateUrl: 'build/app.html',
   config: {}, // http://ionicframework.com/docs/v2/api/config/Config/
-  providers: [CaseService]
+  providers: [CaseService],
+  queries: {
+    nav: new ViewChild('content')
+  }
 })
 class MyApp {
   rootPage: any = SozialhilfeRechnerPage;
@@ -36,7 +40,7 @@ class MyApp {
   openPage(page) {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
-    let nav = this.app.getComponent('nav');
-    nav.setRoot(page.component);
+    //let nav = this.app.getComponent('nav');
+    this.nav.setRoot(page.component);
   }
 }
