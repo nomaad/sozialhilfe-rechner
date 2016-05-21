@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import 'rxjs/add/operator/map';
 
 
+// TODO: Refactor and put models into separate folder, each model 1 file
 export class Case {
   household: Household;
   assets: Assets;
