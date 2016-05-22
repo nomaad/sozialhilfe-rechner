@@ -1,5 +1,5 @@
 ##Sozialhilfe Rechner
-Ionic 2 Project based on https://github.com/lathonez/clicker
+Ionic 2 Project based on https://github.com/lathonez/clicker/commit/5ac11b57de6e20d17cff860d845a13c328af86e9
 
 ## Install & Start
 
