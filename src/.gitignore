@@ -6,6 +6,7 @@ www/build/
 platforms/
 plugins/
 typings/
+coverage/
 *.swp
 .DS_Store
 Thumbs.db
