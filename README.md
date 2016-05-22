@@ -1,11 +1,12 @@
 ##Sozialhilfe Rechner
+[![Build Status](https://travis-ci.org/nomaad/sozialhilfe-rechner.svg?branch=master)](https://travis-ci.org/nomaad/sozialhilfe-rechner)
 Ionic 2 Project based on https://github.com/lathonez/clicker/commit/5ac11b57de6e20d17cff860d845a13c328af86e9
 
 ## Install & Start
 
 ```bash
 git clone https://github.com/nomaad/sozialhilfe-rechner.git
-cd clicker
+cd sozialhilfe-rechner
 npm install       # or `npm run reinstall` if you get an error
 npm start         # start the application (ionic serve)
 ```
