@@ -1,3 +1,6 @@
+##Sozialhilfe Rechner
+Ionic 2 Project based on https://github.com/lathonez/clicker
+
 ## Install & Start
 
 ```bash
