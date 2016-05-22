@@ -1,5 +1,5 @@
-import {ViewChild} from '@angular/core';
-import {App, IonicApp, Platform} from 'ionic-angular';
+import {Type, ViewChild} from '@angular/core';
+import {App, IonicApp, Platform, Nav} from 'ionic-angular';
 import {StatusBar} from 'ionic-native';
 import {SozialhilfeRechnerPage} from './pages/sozialhilfe-rechner/sozialhilfe-rechner';
 import {ListPage} from './pages/list/list';
@@ -17,6 +17,8 @@ import { Dumper }       from './components/dumper/dumper';
   }
 })
 class MyApp {
+  @ViewChild(Nav) private nav: Nav;
+
   rootPage: any = SozialhilfeRechnerPage;
   pages: Array<{title: string, component: any}>
 

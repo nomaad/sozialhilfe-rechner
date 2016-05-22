@@ -24,7 +24,7 @@ export class Case {
 export class Household {
   singleHousehold: number;
   householdSize: number;
-  age: string;
+  age: number;
 
   isSizeValid(){
     if(this.singleHousehold == 1){
