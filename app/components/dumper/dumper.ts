@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
-import {CaseService, Case} from '../../providers/case.service';
+import {CaseService} from '../../services/case.service.ts';
+import {Case} from '../../models/case.ts';
 
 
 /*

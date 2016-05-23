@@ -1,6 +1,7 @@
 import {Page, NavController} from 'ionic-angular';
 import {IncomePage} from '../income/income';
-import {CaseService, Case} from '../../providers/case.service';
+import {CaseService} from '../../services/case.service.ts';
+import {Case} from '../../models/case.ts';
 
 @Page({
   templateUrl: 'build/pages/household/household.html',

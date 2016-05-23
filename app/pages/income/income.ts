@@ -1,5 +1,6 @@
 import {Page, NavController} from 'ionic-angular';
-import {CaseService, Case} from '../../providers/case.service';
+import {CaseService} from '../../services/case.service.ts';
+import {Case} from '../../models/case.ts';
 import {AssetsPage} from '../assets/assets';
 
 
