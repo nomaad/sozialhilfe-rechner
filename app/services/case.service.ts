@@ -11,7 +11,7 @@ export class CaseService {
 
   constructor() {
     this.case = new Case();
-    this.policy = new Skos2016Policy(this.case);
+    this.policy = new Skos2016Policy();
 
   }
 

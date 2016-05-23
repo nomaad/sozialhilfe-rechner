@@ -1,70 +1,157 @@
 'use strict';
 
 import { Skos2016Policy } from './policy';
-import { Case } from './case';
-import { Household, Age, Relationship } from './household';
+import { Household, Age, Relationship, Flatshare } from './household';
 
-function getCase(): Case {
-    let c = new Case();
-    c.income.hasJobIncome = 0;
-    c.income.hasSocialIncome = 0;
-    c.assets.hasAssets = 0;
-    c.assets.hasVehicle = 0;
-    return c;
+function getHousehold(): Household {
+    return new Household();
 }
-function getSingleAdultHouseholdCase(): Case {
-    let c = getCase();
-    c.household.adults = 1;
-    c.household.age = Age.Age26to35;
-    return c;
+function getSingleAdultHousehold(): Household {
+    let h = getHousehold();
+    h.adults = 1;
+    h.age = Age.Age26to35;
+    return h;
 }
-function getSingleYoungAdultHouseholdCase(): Case {
-    let c = getSingleAdultHouseholdCase();
-    c.household.age = Age.Age18to25;
-    return c;
+function getSingleYoungAdultHousehold(): Household {
+    let h = getSingleAdultHousehold();
+    h.age = Age.Age18to25;
+    return h;
 }
-function getMarriedAdultHouseholdCase(): Case {
-    let c = getCase();
-    c.household.adults = 2;
-    c.household.age = Age.Age26to35;
-    c.household.relationship = Relationship.Married;
-    c.household.kids = 0;
-    return c;
+function getMarriedAdultHousehold(): Household {
+    let h = getHousehold();
+    h.adults = 2;
+    h.age = Age.Age26to35;
+    h.relationship = Relationship.Married;
+    h.kids = 0;
+    return h;
 }
-function getConcubinedAdultHouseholdCase(): Case {
-    let c = getMarriedAdultHouseholdCase();
-    c.household.relationship = Relationship.Concubinage;
-    return c;
+function getConcubinedAdultHousehold(): Household {
+    let h = getMarriedAdultHousehold();
+    h.relationship = Relationship.Concubinage;
+    return h;
 }
 
 describe('Skos2016Policy', () => {
 
+    let h;
+    let policy;
+
+    beforeEach(function() {
+        h = new Household();
+        h.age = Age.Age26to35;
+        policy = new Skos2016Policy();
+    });
+
     it('calculates subsistence for single adult', () => {
-        let policy: Skos2016Policy = new Skos2016Policy(getSingleAdultHouseholdCase());
-        expect(policy.getSubsistence()).toEqual(986);
+        expect(policy.getSubsistence(getSingleAdultHousehold())).toEqual(986);
     });
 
     it('calculates subsistence for married couple without kids', () => {
-        let policy: Skos2016Policy = new Skos2016Policy(getMarriedAdultHouseholdCase());
-        expect(policy.getSubsistence()).toEqual(1509);
+        expect(policy.getSubsistence(getMarriedAdultHousehold())).toEqual(1509);
     });
 
     xit('calculates subsistence for concubined couple without kids', () => {
-        let policy: Skos2016Policy = new Skos2016Policy(getConcubinedAdultHouseholdCase());
-        expect(policy.getSubsistence()).toEqual(754.5);
+        expect(policy.getSubsistence(getConcubinedAdultHousehold())).toEqual(754.5);
     });
 
     xit('calculates subsistence for single adult in 2 person household', () => {
-        let c = getSingleAdultHouseholdCase();
-        c.household.adults = 2;
-        c.household.relationship = Relationship.Single;
-        let policy: Skos2016Policy = new Skos2016Policy(c);
-        expect(policy.getSubsistence()).toEqual(887.4);
+        let h = getSingleAdultHousehold();
+        h.adults = 2;
+        h.relationship = Relationship.Single;
+        expect(policy.getSubsistence(h)).toEqual(887.4);
     });
 
     xit('young adult cannot live alone in a flat', () => {
-        let policy: Skos2016Policy = new Skos2016Policy(getSingleYoungAdultHouseholdCase());
-        expect(function(){ policy.getSubsistence(); }).toThrow(); // young adults cannot live alone, must live with parents or in flat share
+        expect(function(){ policy.getSubsistence(getSingleYoungAdultHousehold()); }).toThrow(); // young adults cannot live alone, must live with parents or in flat share
+    });
+
+
+    it('returns correct size for single adult', () => {
+        h.adults = 1;
+        expect(policy.getBeneficiaryUnitSize(h)).toEqual(1);
+    });
+
+    it('returns correct size for single adult with kid', () => {
+        h.adults = 1;
+        h.kids = 1;
+        expect(policy.getBeneficiaryUnitSize(h)).toEqual(2);
+    });
+
+    it('returns correct size for single adult with two kids', () => {
+        h.adults = 1;
+        h.kids = 2;
+        expect(policy.getBeneficiaryUnitSize(h)).toEqual(3);
+    });
+
+    it('returns correct size for single young adult', () => {
+        h.adults = 1;
+        h.age = Age.Age18to25;
+        expect(policy.getBeneficiaryUnitSize(h)).toEqual(1);
+    });
+
+    it('returns correct size for single young adult with kid', () => {
+        h.adults = 1;
+        h.kids = 1;
+        h.age = Age.Age18to25;
+        expect(policy.getBeneficiaryUnitSize(h)).toEqual(2);
+    });
+
+    it('throws error if 2 adults and no relationship set', () => {
+        h.adults = 2;
+        expect(function(){ policy.getBeneficiaryUnitSize(h); }).toThrowError("relationship needs to be set, when 2 adults live together");
+    });
+
+    it('returns correct size for married couple', () => {
+        h.adults = 2;
+        h.relationship = Relationship.Married;
+        expect(policy.getBeneficiaryUnitSize(h)).toEqual(2);
+    });
+
+    it('returns correct size for married couple with kid', () => {
+        h.adults = 2;
+        h.kids = 1;
+        h.relationship = Relationship.Married;
+        expect(policy.getBeneficiaryUnitSize(h)).toEqual(3);
+    });
+
+    // Concubinage
+    it('returns correct size for concubinage couple', () => {
+        h.adults = 2;
+        h.relationship = Relationship.Concubinage;
+        expect(policy.getBeneficiaryUnitSize(h)).toEqual(1);
+    });
+
+    it('returns correct size for concubinage couple with kid', () => {
+        h.adults = 2;
+        h.kids = 1;
+        h.relationship = Relationship.Concubinage;
+        expect(policy.getBeneficiaryUnitSize(h)).toEqual(2);
+    });
+
+    // Flat shares
+    it('throws error for 3 adults with no relationship set', () => {
+        h.adults = 3;
+        expect(function(){ policy.getBeneficiaryUnitSize(h); }).toThrowError("relationship needs to be set, when 2 adults live together");
+    });
+
+    it('throws error for 3 adults with no flatshare type set', () => {
+        h.adults = 3;
+        h.relationship = Relationship.Single;
+        expect(function(){ policy.getBeneficiaryUnitSize(h); }).toThrowError("flatshare type needs to be set, when more than 2 adults live together");
+    });
+
+    it('returns correct size for adult in purpose shared flat', () => {
+        h.adults = 3;
+        h.relationship = Relationship.Single;
+        h.flatshare = Flatshare.Purpose;
+        expect(policy.getBeneficiaryUnitSize(h)).toEqual(1);
+    });
+
+    it('returns correct size for young adult in family like shared flat', () => {
+        h.adults = 3;
+        h.relationship = Relationship.Single;
+        h.flatshare = Flatshare.FamilyLike;
+        expect(policy.getBeneficiaryUnitSize(h)).toEqual(1);
     });
     
 });
