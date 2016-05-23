@@ -1,6 +1,7 @@
 'use strict';
 
 import { Case } from './case';
+import { Age, Relationship } from './household';
 
 // A policy contains rules that are applied to a case (policy = SKOS-Richtlinien)
 export interface PolicyInterface {
@@ -16,11 +17,7 @@ export interface PolicyInterface {
 
     case: Case;
 
-    //Constructor
-    //new (case: Case);
-
     getSubsistence(): number;
-
 
 }
 // Implementation based on http://skos.ch/uploads/media/2016_SKOS-Richtlinien-komplett-d.pdf
@@ -47,6 +44,11 @@ export class Skos2016Policy implements PolicyInterface {
     }
 
     public getSubsistence(): number {
-        return this.subsistence[this.case.household.householdSize - 1];
+        if(this.case.household.age > Age.Age18to25) {
+            return this.subsistence[this.case.household.getHouseholdSize() - 1];
+        }
+        else{
+            throw new Error("not implemented");
+        }
     }
 }

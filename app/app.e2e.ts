@@ -12,9 +12,9 @@ describe('MyApp', () => {
     expect(element(by.css('ion-navbar')).isPresent()).toEqual(true);
   });
 
-  /*it('should have correct nav text for Home', () => {
-    expect(element(by.css('ion-navbar:first-child')).getText()).toContain('Sozialhilfe Rechner');
-  });*/
+  xit('should have no nav text for Home', () => {
+    //expect(element(by.css('ion-navbar:first-child')).getText()).toContain('Sozialhilfe Rechner');
+  });
 
   it('has a menu button that displays the left menu', () => {
     element(by.css('.bar-button-menutoggle')).click()
