@@ -27,4 +27,5 @@ export class Case {
      return `http://www.gravatar.com/avatar/${this.hash}?d=retro&s=${size}`
      }
      }*/
+    
 }

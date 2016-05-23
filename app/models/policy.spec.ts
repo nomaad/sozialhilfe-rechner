@@ -66,4 +66,5 @@ describe('Skos2016Policy', () => {
         let policy: Skos2016Policy = new Skos2016Policy(getSingleYoungAdultHouseholdCase());
         expect(function(){ policy.getSubsistence(); }).toThrow(); // young adults cannot live alone, must live with parents or in flat share
     });
+    
 });

@@ -62,4 +62,5 @@ export class Household {
         }
         return false;
     }
+    
 }

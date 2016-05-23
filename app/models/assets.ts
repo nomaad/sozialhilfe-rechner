@@ -17,4 +17,5 @@ export class Assets{
     isValid(){
         return this.isAssetsValid() && this.isVehicleValid();
     }
+    
 }

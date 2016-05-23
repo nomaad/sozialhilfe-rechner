@@ -51,4 +51,5 @@ export class Skos2016Policy implements PolicyInterface {
             throw new Error("not implemented");
         }
     }
+    
 }

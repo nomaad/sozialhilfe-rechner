@@ -31,5 +31,4 @@ describe('MyApp', () => {
         expect(element.all(by.css('ion-label')).first().getText()).toEqual('Sozialhilfe Rechner');
       });
   });
-
 });

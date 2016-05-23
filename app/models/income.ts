@@ -18,4 +18,5 @@ export class Income {
     isValid(): boolean{
         return this.isJobIncomeValid() && this.isSocialIncomeValid();
     }
+    
 }

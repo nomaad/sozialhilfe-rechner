@@ -101,5 +101,4 @@ describe('Household', () => {
         h.flatshare = Flatshare.FamilyLike;
         expect(h.getHouseholdSize()).toEqual(1);
     });
-
 });
