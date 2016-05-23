@@ -1,13 +1,13 @@
 import {Page, NavController} from 'ionic-angular';
 import {IncomePage} from '../income/income';
 import {CaseService} from '../../services/case.service.ts';
-import {Case} from '../../models/case.ts';
+import {Household} from '../../models/household.ts';
 
 @Page({
   templateUrl: 'build/pages/household/household.html',
 })
 export class HouseholdPage {
-  case: Case;
+  household: Household;
 
   static get parameters() {
     return [[NavController], [CaseService]];
@@ -15,15 +15,15 @@ export class HouseholdPage {
 
   constructor(private nav: NavController, private caseService: CaseService){
     this.nav = nav;
-    this.case = caseService.getCase();
+    this.household = caseService.getHousehold();
   }
 
   validAge(){
-    return (this.case.household.age != null && this.case.household.age > 1);
+    return (this.household.age != null && this.household.age > 1);
   }
 
   showNext(){
-    return this.validAge() && this.case.household.isSizeValid();
+    return this.validAge() && this.household.isSizeValid();
   }
 
   next(event) {

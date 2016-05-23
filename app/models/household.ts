@@ -1,5 +1,8 @@
 'use strict';
 
+import { Income }    from './income'
+import { Assets }    from './assets'
+
 export enum Age {
     AgeUnder18= 0,
     Age18to25 = 1,
@@ -28,10 +31,22 @@ export class Household {
     relationship: Relationship;
     flatshare: Flatshare;
 
+    assets: Assets;
+    income: Income;
+
     constructor(kids?: number) {
         this.kids = kids || 0;
+
+        this.assets = new Assets();
+        this.income = new Income();
     }
 
+    isValid(){
+        // TODO: check if all data is valid
+        return this.isSizeValid() &&
+            this.income.isValid() &&
+            this.assets.isValid();
+    }
     public isSizeValid(): boolean{
         if(this.adults == 1){
             return true;

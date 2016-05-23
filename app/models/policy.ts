@@ -1,6 +1,5 @@
 'use strict';
 
-import { Case } from './case';
 import { Household, Age, Relationship } from './household';
 
 // A policy contains rules that are applied to a case (policy = SKOS-Richtlinien)
