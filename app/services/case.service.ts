@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import               'rxjs/add/operator/map';
-import {PolicyInterface, Skos2016Policy}      from '../models/policy';
+import {PolicyInterface}      from '../models/policy.interfaces';
+import {Skos2016Policy}      from '../models/policy.skos2016';
 import {Household} from "../models/household";
 
 @Injectable()
