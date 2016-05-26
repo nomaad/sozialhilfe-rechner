@@ -25,6 +25,8 @@ export enum Flatshare {
 }
 
 export class Household {
+
+    errors: Array<string>;
     age: Age;
     kids: number;
     adults: number;
@@ -47,11 +49,39 @@ export class Household {
             this.income.isValid() &&
             this.assets.isValid();
     }
+
     public isSizeValid(): boolean{
-        if(this.adults == 1){
+        this.errors = [];
+        if(this.age < 1 || this.age == null){
+            this.errors.push("age needs to be set");
+            return false;
+        }
+        if(this.adults < 1 || this.adults == null){
+            this.errors.push("a household needs at least one adult");
+            return false;
+        }
+        if(this.adults == 1) {
             return true;
         }
-        return false;
+        // 2 adults
+        else if(this.adults > 1) {
+            if(this.relationship == null){
+                this.errors.push("relationship needs to be set, when 2 adults live together");
+                return false;
+            }
+            else{
+                if(this.relationship == Relationship.Married){
+                    return true;
+                }
+                else{
+                    if(this.adults > 2 && this.flatshare == null){
+                        this.errors.push("flatshare type needs to be set, when more than 2 adults live together");
+                        return false;
+                    }
+                    return true;
+                }
+            }
+        }
     }
     
 }
