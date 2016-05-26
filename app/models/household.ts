@@ -50,12 +50,15 @@ export class Household {
             this.assets.isValid();
     }
 
-    public isSizeValid(): boolean{
-        this.errors = [];
+    public isAgeValid(): boolean{
         if(this.age < 1 || this.age == null){
             this.errors.push("age needs to be set");
             return false;
         }
+    }
+
+    public isSizeValid(): boolean{
+        this.errors = [];
         if(this.adults < 1 || this.adults == null){
             this.errors.push("a household needs at least one adult");
             return false;

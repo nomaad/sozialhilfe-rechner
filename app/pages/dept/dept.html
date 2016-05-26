@@ -1,0 +1,35 @@
+<ion-navbar *navbar dark>
+  <ion-title>Schulden</ion-title>
+</ion-navbar>
+
+<ion-content padding>
+    <form>
+        <div class="block-dept">
+            <p>
+                Haben Sie Schulden?
+            </p>
+            <ion-segment favorite [(ngModel)]="household.assets.hasDept">
+                <ion-segment-button value="1">
+                    Ja
+                </ion-segment-button>
+                <ion-segment-button value="0"><!--TODO: Set assets.deptValue to 0 if this is selected! Do this for similar cases too.-->
+                    Nein
+                </ion-segment-button>
+            </ion-segment>
+            <div *ngIf="household.assets.hasDept == 1">
+                <p>
+                    Wie viel Schulden haben Sie insgesamt?
+                </p>
+                <ion-item>
+                    <ion-label floating>Schulden in CHF</ion-label>
+                    <ion-input type="number" min="0" step="0.05" value="0" [(ngModel)]="household.assets.deptValue"></ion-input>
+                </ion-item>
+            </div>
+        </div>
+
+        <p *ngIf="household.assets.isDeptValid()">
+        <button full round large favorite (click)="next($event)">Weiter</button>
+        </p>
+    </form>
+    <dumper></dumper>
+</ion-content>
