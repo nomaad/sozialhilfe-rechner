@@ -22,7 +22,7 @@
                 </p>
                 <ion-item>
                     <ion-label floating>Einkommen in CHF</ion-label>
-                    <ion-input type="number" min="0" step="0.05" value="0" [(ngModel)]="household.income.jobIncomeValue"></ion-input>
+                    <ion-input type="tel" min="0" step="1" value="0" [(ngModel)]="household.income.jobIncomeValue"></ion-input>
                 </ion-item>
             </div>
         </div>
@@ -45,7 +45,7 @@
                 </p>
                 <ion-item>
                     <ion-label floating>Total andere Einkommen in CHF</ion-label>
-                    <ion-input type="number" min="0" step="0.05" value="0" [(ngModel)]="household.income.socialIncomeValue"></ion-input>
+                    <ion-input type="tel" min="0" step="1" value="0" [(ngModel)]="household.income.socialIncomeValue"></ion-input>
                 </ion-item>
             </div>
         </div>
