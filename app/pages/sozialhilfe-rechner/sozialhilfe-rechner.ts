@@ -1,5 +1,6 @@
 import {Page, NavController} from 'ionic-angular';
 import {HouseholdPage} from '../household/household';
+import {ResultPage} from '../result/result';
 
 
 @Page({
@@ -15,7 +16,8 @@ export class SozialhilfeRechnerPage {
   }
 
   startSozialhilfeRechner(event) {
-        this.nav.push(HouseholdPage);
+        this.nav.push(ResultPage);
+        //this.nav.push(HouseholdPage);
   }
 }
 
