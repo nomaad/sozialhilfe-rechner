@@ -1,0 +1,47 @@
+<ion-navbar *navbar dark>
+  <ion-title>Wohnsituation</ion-title>
+</ion-navbar>
+
+<ion-content padding>
+    <form>
+        <div class="block-accommodation">
+            <p>In welcher Wohnform leben Sie momentan?</p>
+            <ion-item>
+                <ion-label>Wohnform</ion-label>
+                    <ion-select interface="action-sheet" [(ngModel)]="household.accommodation.accommodationType">
+                    <ion-option value="1">Miete/Untermiete</ion-option>
+                    <ion-option value="2">Wohneigentum</ion-option>
+                    <ion-option value="3">Ohne feste Unterkunft</ion-option>
+                    <ion-option value="4">Gratisunterkunft</ion-option>
+                    <ion-option value="5">Andere Wohnform</ion-option>
+                </ion-select>
+            </ion-item>
+        </div>
+        <div class="block-rent" *ngIf="household.accommodation.accommodationType == 1">
+            <p>
+                Wie hoch ist Ihr monatlicher Mietzins inkl. Nebenkosten?
+            </p>
+            <ion-item>
+                    <ion-label floating>Mietzins inkl. NK in CHF</ion-label>
+                    <ion-input type="number" min="0" step="0.05" value="0" [(ngModel)]="household.accommodation.rentValue"></ion-input>
+            </ion-item>
+        </div>
+        <div *ngIf="household.accommodation.accommodationType == 2">
+            <p danger>Der Sozialdienst wird abklären, ob das Wohneigentum verkauft werden muss oder vorläufig auf Verkauf verzichtet und stattdessen ein ein Grundpfandrecht eingeführt wird.</p>
+        </div>
+        <div *ngIf="household.accommodation.accommodationType == 3">
+            <p danger>Der Sozialdienst bezahlt überbrückend allenfalls die Kosten einer Notunterkunft.</p>
+        </div>
+        <div *ngIf="household.accommodation.accommodationType == 4">
+            <p danger>Der Sozialdienst bezahlt keine Wohnkosten (Bedarfsprinzip).</p>
+        </div>
+        <div *ngIf="household.accommodation.accommodationType == 5">
+            <p danger>In bestimmten Fällen bezahlt der Sozialdienst betreute oder begleitete Wohnformen in Institutionen.</p>
+        </div>
+
+        <p *ngIf="household.accommodation.isValid()">
+        <button full round large favorite (click)="next($event)">Weiter</button>
+        </p>
+    </form>
+    <dumper></dumper>
+</ion-content>
