@@ -1,6 +1,7 @@
 import {Page, NavController} from 'ionic-angular';
 import {CaseService} from '../../services/case.service.ts';
 import {Household} from '../../models/household.ts';
+import {HealthcarePage} from '../healthcare/healthcare';
 
 @Page({
   templateUrl: 'build/pages/dept/dept.html',
@@ -17,11 +18,7 @@ export class DeptPage {
     this.household = caseService.getHousehold();
   }
 
-  showNext(){
-    return false;
-  }
-
   next(event) {
-    //this.nav.push(EinkommenPage);
+    this.nav.push(HealthcarePage);
   }
 }

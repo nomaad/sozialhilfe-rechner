@@ -1,7 +1,9 @@
 'use strict';
 
-import { Income }    from './income'
-import { Assets }    from './assets'
+import { Income }           from './income'
+import { Assets }           from './assets'
+import { Healthcare }       from './healthcare'
+import { Accommodation }    from './accommodation'
 
 export enum Age {
     AgeUnder18= 0,
@@ -35,19 +37,25 @@ export class Household {
 
     assets: Assets;
     income: Income;
+    healthcare: Healthcare;
+    accommodation: Accommodation;
 
     constructor(kids?: number) {
         this.kids = kids || 0;
 
         this.assets = new Assets();
         this.income = new Income();
+        this.healthcare = new Healthcare();
+        this.accommodation = new Accommodation();
     }
 
     isValid(){
         // TODO: check if all data is valid
         return this.isSizeValid() &&
             this.income.isValid() &&
-            this.assets.isValid();
+            this.assets.isValid() &&
+            this.healthcare.isValid() &&
+            this.accommodation.isValid();
     }
 
     public isAgeValid(): boolean{
