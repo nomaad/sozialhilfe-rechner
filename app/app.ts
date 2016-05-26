@@ -7,7 +7,7 @@ import { SozialhilfeRechnerPage }             from './pages/sozialhilfe-rechner/
 import { ListPage }                           from './pages/list/list';
 import { ClickerList }                        from './pages/clickerList/clickerList';
 import { Page2 }                              from './pages/page2/page2';
-import {CaseService}                          from './providers/case.service';
+import { CaseService }                        from './services/case.service.ts';
 import { Dumper }                             from './components/dumper/dumper';
 
 @App({

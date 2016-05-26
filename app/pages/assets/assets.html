@@ -8,7 +8,7 @@
             <p>
                 Besitzen Sie Vermögen (Privat- und Sparkonto, Wertschriften etc.)?
             </p>
-            <ion-segment favorite [(ngModel)]="case.assets.hasAssets">
+            <ion-segment favorite [(ngModel)]="household.assets.hasAssets">
                 <ion-segment-button value="1">
                     Ja
                 </ion-segment-button>
@@ -16,22 +16,22 @@
                     Nein
                 </ion-segment-button>
             </ion-segment>
-            <div *ngIf="case.assets.hasAssets == 1">
+            <div *ngIf="household.assets.hasAssets == 1">
                 <p>
                     Wie viel Vermögen besitzen Sie insgesamt?
                 </p>
                 <ion-item>
                     <ion-label floating>Vermögen in CHF</ion-label>
-                    <ion-input type="number" min="0" step="0.05" value="0" [(ngModel)]="case.assets.assetValue"></ion-input>
+                    <ion-input type="number" min="0" step="0.05" value="0" [(ngModel)]="household.assets.assetValue"></ion-input>
                 </ion-item>
             </div>
         </div>
 
-        <div class="block-car" *ngIf="case.assets.isAssetsValid()">
+        <div class="block-car" *ngIf="household.assets.isAssetsValid()">
             <p>
                 Besitzen Sie ein Auto oder ein anderes Fahrzeug?
             </p>
-            <ion-segment favorite [(ngModel)]="case.assets.hasVehicle">
+            <ion-segment favorite [(ngModel)]="household.assets.hasVehicle">
                 <ion-segment-button value="1">
                     Ja
                 </ion-segment-button>
@@ -39,19 +39,19 @@
                     Nein
                 </ion-segment-button>
             </ion-segment>
-            <div *ngIf="case.assets.hasVehicle == 1">
+            <div *ngIf="household.assets.hasVehicle == 1">
                 <p>
                     Wie viel Wert hat Ihr Fahrzeug?
                 </p>
                 <ion-item>
                     <ion-label floating>Fahrzeugwert in CHF</ion-label>
-                    <ion-input type="number" min="0" step="0.05" value="0" [(ngModel)]="case.assets.vehicleValue"></ion-input>
+                    <ion-input type="number" min="0" step="0.05" value="0" [(ngModel)]="household.assets.vehicleValue"></ion-input>
                 </ion-item>
             </div>
         </div>
 
-        <p *ngIf="case.assets.isValid()">
-        <button full round large favorite click="next($event)">Weiter</button>
+        <p *ngIf="household.assets.isValid()">
+        <button full round large favorite (click)="next($event)">Weiter</button>
         </p>
     </form>
     <dumper></dumper>

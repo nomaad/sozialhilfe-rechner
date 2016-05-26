@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
-import {CaseService, Case} from '../../providers/case.service';
+import {CaseService} from '../../services/case.service.ts';
+import {Household} from "../../models/household";
 
 
 /*
@@ -13,9 +14,9 @@ import {CaseService, Case} from '../../providers/case.service';
   templateUrl: 'build/components/dumper/dumper.html',
 })
 export class Dumper {
-  case: Case;
+  household: Household;
   
   constructor(private caseService: CaseService ) {
-    this.case = caseService.getCase();
+    this.household = caseService.getHousehold();
   }
 }

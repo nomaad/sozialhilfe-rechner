@@ -1,12 +1,11 @@
 import {Page, NavController} from 'ionic-angular';
-import {IncomePage} from '../income/income';
 import {CaseService} from '../../services/case.service.ts';
 import {Household} from '../../models/household.ts';
 
 @Page({
-  templateUrl: 'build/pages/household/household.html',
+  templateUrl: 'build/pages/dept/dept.html',
 })
-export class HouseholdPage {
+export class DeptPage {
   household: Household;
 
   static get parameters() {
@@ -18,15 +17,11 @@ export class HouseholdPage {
     this.household = caseService.getHousehold();
   }
 
-  validAge(){
-    return (this.household.age != null && this.household.age > 1);
-  }
-
   showNext(){
-    return this.validAge() && this.household.isSizeValid();
+    return false;
   }
 
   next(event) {
-      this.nav.push(IncomePage);
+    //this.nav.push(EinkommenPage);
   }
 }

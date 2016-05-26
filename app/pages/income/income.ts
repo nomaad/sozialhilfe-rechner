@@ -1,5 +1,6 @@
 import {Page, NavController} from 'ionic-angular';
-import {CaseService, Case} from '../../providers/case.service';
+import {CaseService} from '../../services/case.service.ts';
+import {Household} from '../../models/household.ts';
 import {AssetsPage} from '../assets/assets';
 
 
@@ -7,7 +8,7 @@ import {AssetsPage} from '../assets/assets';
   templateUrl: 'build/pages/income/income.html',
 })
 export class IncomePage {
-  case: Case;
+  household: Household;
 
   static get parameters() {
     return [[NavController], [CaseService]];
@@ -15,7 +16,7 @@ export class IncomePage {
 
   constructor(private nav: NavController, private caseService: CaseService){
     this.nav = nav;
-    this.case = caseService.getCase();
+    this.household = caseService.getHousehold();
   }
 
   next(event) {

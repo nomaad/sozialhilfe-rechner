@@ -1,9 +1,3 @@
-<!--
-  Generated template for the HaushaltPage page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-navbar *navbar dark>
   <ion-title>Haushalt</ion-title>
 </ion-navbar>
@@ -14,7 +8,7 @@
             <p>
                 Wie viele Personen leben in Ihrem Haushalt?
             </p>
-            <ion-segment favorite [(ngModel)]="case.household.singleHousehold">
+            <ion-segment favorite [(ngModel)]="household.adults">
                 <ion-segment-button value="1">
                     Eine
                 </ion-segment-button>
@@ -23,11 +17,11 @@
                 </ion-segment-button>
             </ion-segment>
         </div>
-        <div class="block-age" *ngIf="case.household.isSizeValid()">
+        <div class="block-age" *ngIf="household.isSizeValid()">
             <p>Wie alt sind Sie?</p>
             <ion-item>
                 <ion-label>Alter</ion-label>
-                <ion-select interface="action-sheet" [(ngModel)]="case.household.age">
+                <ion-select interface="action-sheet" [(ngModel)]="household.age">
                 <ion-option value="1">18-25</ion-option>
                 <ion-option value="2">26-35</ion-option>
                 <ion-option value="3">36-45</ion-option>
