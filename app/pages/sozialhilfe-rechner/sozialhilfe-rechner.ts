@@ -16,8 +16,8 @@ export class SozialhilfeRechnerPage {
   }
 
   startSozialhilfeRechner(event) {
-        this.nav.push(ResultPage);
-        //this.nav.push(HouseholdPage);
+        //this.nav.push(ResultPage);
+        this.nav.push(HouseholdPage);
   }
 }
 

@@ -2,6 +2,27 @@
 
 import { Household, Age, Relationship } from './household';
 
+export class WelfareResult {
+
+    householdSize: number;
+    unitSize: number;
+
+    subsistence: number;
+    actualRent: number;
+    allowableRent: number;
+    actualHealthcare: number;
+    allowableHealthcare: number;
+
+    totalAllowableExpenses: number;
+
+    jobIncome: number;
+    socialIncome: number;
+    totalIncome: number;
+
+    totalWelfare: number;
+    eligible: boolean;
+}
+
 // A policy contains rules that are applied to a case (policy = SKOS-Richtlinien)
 export interface PolicyInterface {
 
@@ -16,6 +37,7 @@ export interface PolicyInterface {
 
     getBeneficiaryUnit: GetBeneficiaryUnit;
     getSubsistence(household: Household): number;
+    getWelfareResult(household: Household): WelfareResult;
 
 }
 

@@ -7,6 +7,10 @@ export class Income {
     hasSocialIncome: number;
     socialIncomeValue: number;
 
+    constructor(){
+        this.jobIncomeValue = 0;
+        this.socialIncomeValue = 0;
+    }
     isJobIncomeValid(): boolean{
         return this.hasJobIncome == 0 || (this.hasJobIncome == 1 && this.jobIncomeValue > 0);
     }

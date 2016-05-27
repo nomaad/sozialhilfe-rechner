@@ -1,3 +1,22 @@
+.result {
+    text-align: center;
+    /*border: 3px solid #2d2d2d;*/
+    font-size: 1.5em;
+    font-weight: bold;
+    padding:5%;
+    background-color: #69BB7B;
+    color: #fff;
+}
+.not-eligible{
+    background-color: rgba(255, 58, 58, 0.83);
+}
+.subtitle{
+    text-align: center;
+}
 .even{
-    $text-color: #69BB7B;
+    background-color: #ddd;
+}
+.total{
+    background-color: #69BB7B; /*TODO: reference variable */
+    font-weight: bold;
 }

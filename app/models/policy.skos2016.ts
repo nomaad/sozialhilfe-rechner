@@ -1,7 +1,7 @@
 'use strict';
 
 import { Household, Age, Relationship } from './household';
-import {PolicyInterface, GetBeneficiaryUnit} from './policy.interfaces';
+import {PolicyInterface, GetBeneficiaryUnit, WelfareResult} from './policy.interfaces';
 import {getSkos2016BeneficiaryUnit} from './policy.beneficiaryunit';
 
 // Implementation based on http://skos.ch/uploads/media/2016_SKOS-Richtlinien-komplett-d.pdf
@@ -24,6 +24,34 @@ export class Skos2016Policy implements PolicyInterface {
         this.assetLimitChild  = 2000;
         this.assetLimitTotal = 10000;
         this.getBeneficiaryUnit = getSkos2016BeneficiaryUnit;
+    }
+
+    public getWelfareResult(h: Household): WelfareResult {
+        let r = new WelfareResult();
+
+        r.householdSize = h.size();
+        r.unitSize = this.getBeneficiaryUnit(h);
+
+        r.subsistence = this.getSubsistence(h);
+
+        // TODO: move to behaviour
+        r.actualRent = Number(h.accommodation.rentValue);
+        r.allowableRent = Number(h.accommodation.rentValue);
+
+        // TODO: move to behaviour
+        r.actualHealthcare = Number(h.healthcare.kvg);
+        r.allowableHealthcare = Number(h.healthcare.kvg);
+
+        r.totalAllowableExpenses = Number(r.subsistence) + Number(r.allowableRent) + Number(r.allowableHealthcare);
+
+        r.jobIncome = Number(h.income.jobIncomeValue);
+        r.socialIncome = Number(h.income.socialIncomeValue);
+        r.totalIncome = Number(r.jobIncome) + Number(r.socialIncome);
+
+        r.totalWelfare = Number(r.totalAllowableExpenses) - Number(r.totalIncome);
+        r.eligible = r.totalAllowableExpenses > r.totalIncome;
+
+        return r;
     }
 
     public getSubsistence(h: Household): number {

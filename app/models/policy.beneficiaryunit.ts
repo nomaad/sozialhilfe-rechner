@@ -5,7 +5,7 @@ import {GetBeneficiaryUnit} from './policy.interfaces';
 
 let getSkos2016BeneficiaryUnit = function(h: Household): number {
     if(h.adults == 1) {
-        return h.adults + h.kids;
+        return Number(h.adults) + Number(h.kids);
     }
     else{
         if(h.relationship == null){
@@ -13,13 +13,13 @@ let getSkos2016BeneficiaryUnit = function(h: Household): number {
         }
         else{
             if(h.relationship == Relationship.Married){
-                return 2 + h.kids;
+                return 2 + Number(h.kids);
             }
             else{
                 if(h.adults > 2 && h.flatshare == null){
                     throw Error("flatshare type needs to be set, when more than 2 adults live together");
                 }
-                return 1 + h.kids;
+                return 1 + Number(h.kids);
             }
         }
     }

@@ -8,12 +8,9 @@ import {Household} from "../models/household";
 export class CaseService {
 
   private household: Household;
-  private policy: PolicyInterface;
 
   constructor() {
     this.household = new Household();
-    this.policy = new Skos2016Policy();
-
   }
 
   getHousehold(){

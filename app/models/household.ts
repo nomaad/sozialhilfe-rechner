@@ -49,6 +49,10 @@ export class Household {
         this.accommodation = new Accommodation();
     }
 
+    size(): number{
+        return Number(this.adults) + Number(this.kids);
+    }
+
     isValid(){
         // TODO: check if all data is valid
         return this.isSizeValid() &&
