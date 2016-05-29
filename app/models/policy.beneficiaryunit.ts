@@ -3,7 +3,7 @@
 import { Household, Age, Relationship } from './household';
 import {GetBeneficiaryUnit} from './policy.interfaces';
 
-let getSkos2016BeneficiaryUnit = function(h: Household): number {
+let skos2016BeneficiaryUnitBehaviour = function(h: Household): number {
     if(h.adults == 1) {
         return Number(h.adults) + Number(h.kids);
     }
@@ -25,4 +25,4 @@ let getSkos2016BeneficiaryUnit = function(h: Household): number {
     }
 };
 
-export { getSkos2016BeneficiaryUnit };
+export { skos2016BeneficiaryUnitBehaviour };

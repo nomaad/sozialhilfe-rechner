@@ -3,63 +3,70 @@
 </ion-navbar>
 
 <ion-content padding>
-    <div class="result eligible" *ngIf="result.eligible">
+    <!--<div class="result eligible" *ngIf="result.eligible">
         <ion-icon check item-left></ion-icon>
         Sie haben wahrscheinlich Anspruch auf CHF {{result.totalWelfare}} Sozialhilfe.
     </div>
     <div class="result not-eligible" *ngIf="!result.eligible" >
         <ion-icon error item-left></ion-icon>
         Sie haben wahrscheinlich keinen Anspruch auf Sozialhilfe.
-    </div>
-    <h3>Budget</h3>
-    <p class="subtitle">für {{ policy.getBeneficiaryUnit(household) }} Person(en) in einem {{ household.size() }} Personen-Haushalt</p>
-    <ion-grid>
-        <ion-row class="even">
-            <ion-col width-66>Grundbedarf für den Lebensunterhalt</ion-col>
-            <ion-col>CHF</ion-col>
-            <ion-col>{{result.subsistence}}</ion-col>
-        </ion-row>
-        <ion-row>
-            <ion-col width-66>Wohnkosten (Miete inkl. Nebenkosten)</ion-col>
-            <ion-col>CHF</ion-col>
-            <ion-col>{{result.allowableRent}}</ion-col>
-        </ion-row>
-        <ion-row class="even">
-            <ion-col width-66>Gesundheitskosten / Krankenkasse</ion-col>
-            <ion-col>CHF</ion-col>
-            <ion-col>{{result.allowableHealthcare}}</ion-col>
-        </ion-row>
-        <!--<ion-row>
-            <ion-col width-66>Erwerbsunkosten</ion-col>
-            <ion-col>CHF</ion-col>
-            <ion-col>0</ion-col>
-        </ion-row>
-        <ion-row class="even">
-            <ion-col width-66>Kosten für Kinderbetreuung</ion-col>
-            <ion-col>CHF</ion-col>
-            <ion-col>0</ion-col>
-        </ion-row>-->
-        <ion-row class="total">
-            <ion-col width-66>Total anrechenbarer Lebensbedarf</ion-col>
-            <ion-col>CHF</ion-col>
-            <ion-col>{{result.totalAllowableExpenses}}</ion-col>
-        </ion-row>
-        <ion-row class="even">
-            <ion-col width-66>Erwerbseinkommen</ion-col>
-            <ion-col>CHF</ion-col>
-            <ion-col>- {{result.jobIncome}}</ion-col>
-        </ion-row>
-        <ion-row>
-            <ion-col width-66>Einkommen aus Sozialversicherungen</ion-col>
-            <ion-col>CHF</ion-col>
-            <ion-col>- {{result.socialIncome}}</ion-col>
-        </ion-row>
-        <ion-row class="total">
-            <ion-col width-66>Sozialhilfe</ion-col>
-            <ion-col>CHF</ion-col>
-            <ion-col>{{result.totalWelfare}}</ion-col>
-        </ion-row>
-    </ion-grid>
+    </div>-->
+
+    <ion-card>
+        <ion-card-header>Budget</ion-card-header>
+        <ion-card-content>
+            <p class="subtitle">für {{ policy.getBeneficiaryUnit(household) }} Person(en) in einem {{ household.size() }} Personen-Haushalt</p>
+            <ion-grid>
+                <ion-row class="even">
+                    <ion-col width-66>Grundbedarf für den Lebensunterhalt</ion-col>
+                    <ion-col>CHF</ion-col>
+                    <ion-col>{{result.subsistence}}</ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col width-66>Wohnkosten (Miete inkl. Nebenkosten)</ion-col>
+                    <ion-col>CHF</ion-col>
+                    <ion-col>{{result.allowableRent}}</ion-col>
+                </ion-row>
+                <ion-row class="even">
+                    <ion-col width-66>Gesundheitskosten / Krankenkasse</ion-col>
+                    <ion-col>CHF</ion-col>
+                    <ion-col>{{result.allowableHealthcare}}</ion-col>
+                </ion-row>
+                <!--<ion-row>
+                    <ion-col width-66>Erwerbsunkosten</ion-col>
+                    <ion-col>CHF</ion-col>
+                    <ion-col>0</ion-col>
+                </ion-row>
+                <ion-row class="even">
+                    <ion-col width-66>Kosten für Kinderbetreuung</ion-col>
+                    <ion-col>CHF</ion-col>
+                    <ion-col>0</ion-col>
+                </ion-row>-->
+                <ion-row class="total">
+                    <ion-col width-66>Total anrechenbarer Lebensbedarf</ion-col>
+                    <ion-col>CHF</ion-col>
+                    <ion-col>{{result.totalAllowableExpenses}}</ion-col>
+                </ion-row>
+                <ion-row class="even">
+                    <ion-col width-66>Erwerbseinkommen</ion-col>
+                    <ion-col>CHF</ion-col>
+                    <ion-col>- {{result.jobIncome}}</ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col width-66>Einkommen aus Sozialversicherungen</ion-col>
+                    <ion-col>CHF</ion-col>
+                    <ion-col>- {{result.socialIncome}}</ion-col>
+                </ion-row>
+                <ion-row class="total">
+                    <ion-col width-66>Sozialhilfe</ion-col>
+                    <ion-col>CHF</ion-col>
+                    <ion-col>{{result.totalWelfare}}</ion-col>
+                </ion-row>
+            </ion-grid>
+
+        </ion-card-content>
+    </ion-card>
+
 
     <dumper></dumper>
 </ion-content>

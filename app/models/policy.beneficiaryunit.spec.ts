@@ -1,7 +1,7 @@
 'use strict';
 
 import { Household, Age, Relationship, Flatshare } from './household';
-import {getSkos2016BeneficiaryUnit} from './policy.beneficiaryunit';
+import {skos2016BeneficiaryUnitBehaviour} from './policy.beneficiaryunit';
 import {GetBeneficiaryUnit} from './policy.interfaces';
 
 describe('BeneficiaryUnit', () => {
@@ -12,7 +12,7 @@ describe('BeneficiaryUnit', () => {
     beforeEach(function() {
         h = new Household();
         h.age = Age.Age26to35;
-        b = getSkos2016BeneficiaryUnit;
+        b = skos2016BeneficiaryUnitBehaviour;
     });
 
     it('returns correct unit for single adult', () => {

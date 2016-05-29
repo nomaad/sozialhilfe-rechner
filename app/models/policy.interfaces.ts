@@ -36,7 +36,6 @@ export interface PolicyInterface {
     assetLimitTotal: number;
 
     getBeneficiaryUnit: GetBeneficiaryUnit;
-    getSubsistence(household: Household): number;
     getWelfareResult(household: Household): WelfareResult;
 
 }

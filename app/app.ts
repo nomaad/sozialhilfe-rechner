@@ -9,6 +9,7 @@ import { ClickerList }                        from './pages/clickerList/clickerL
 import { Page2 }                              from './pages/page2/page2';
 import { CaseService }                        from './services/case.service.ts';
 import { Dumper }                             from './components/dumper/dumper';
+import {ResultPage} from "./pages/result/result";
 
 @App({
   templateUrl: 'build/app.html',
@@ -41,6 +42,7 @@ export class MyApp {
       { title: 'List', component: ListPage },
       { title: 'Clickers', component: ClickerList },
       { title: 'Goodbye Ionic', component: Page2 },
+      { title: 'Budget', component: ResultPage },
     ];
   }
 

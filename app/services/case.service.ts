@@ -11,6 +11,16 @@ export class CaseService {
 
   constructor() {
     this.household = new Household();
+
+    //*
+    this.household.age = 2;
+    this.household.adults = 1;
+    this.household.kids = 2;
+    this.household.relationship = 2;
+    this.household.accommodation.rentValue = 1600;
+    this.household.healthcare.kvg = 800;
+    this.household.income.jobIncomeValue = 1200;
+    //*/
   }
 
   getHousehold(){

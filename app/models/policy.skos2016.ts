@@ -2,7 +2,7 @@
 
 import { Household, Age, Relationship } from './household';
 import {PolicyInterface, GetBeneficiaryUnit, WelfareResult} from './policy.interfaces';
-import {getSkos2016BeneficiaryUnit} from './policy.beneficiaryunit';
+import {skos2016BeneficiaryUnitBehaviour} from './policy.beneficiaryunit';
 
 // Implementation based on http://skos.ch/uploads/media/2016_SKOS-Richtlinien-komplett-d.pdf
 export class Skos2016Policy implements PolicyInterface {
@@ -23,7 +23,7 @@ export class Skos2016Policy implements PolicyInterface {
         this.assetLimitCouple = 8000;
         this.assetLimitChild  = 2000;
         this.assetLimitTotal = 10000;
-        this.getBeneficiaryUnit = getSkos2016BeneficiaryUnit;
+        this.getBeneficiaryUnit = skos2016BeneficiaryUnitBehaviour;
     }
 
     public getWelfareResult(h: Household): WelfareResult {
@@ -54,7 +54,7 @@ export class Skos2016Policy implements PolicyInterface {
         return r;
     }
 
-    public getSubsistence(h: Household): number {
+    private getSubsistence(h: Household): number {
         if(h.age > Age.Age18to25) {
             return this.subsistence[this.getBeneficiaryUnit(h) - 1];
         }
