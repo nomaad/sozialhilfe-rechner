@@ -4,14 +4,17 @@ import { Household, Age, Relationship } from './household';
 
 export class WelfareResult {
 
+    constructor(){
+        this.healthcare = new HealthcareResult();
+    }
+
     householdSize: number;
     unitSize: number;
 
     subsistence: number;
     actualRent: number;
     allowableRent: number;
-    actualHealthcare: number;
-    allowableHealthcare: number;
+    healthcare: HealthcareResult;
 
     totalAllowableExpenses: number;
 
@@ -21,6 +24,13 @@ export class WelfareResult {
 
     totalWelfare: number;
     eligible: boolean;
+}
+
+export class HealthcareResult{
+    actualHealthcare: number;
+    allowableHealthcare: number;
+    message: string;
+    exceeded: boolean;
 }
 
 // A policy contains rules that are applied to a case (policy = SKOS-Richtlinien)
@@ -35,12 +45,22 @@ export interface PolicyInterface {
     assetLimitChild: number;
     assetLimitTotal: number;
 
-    getBeneficiaryUnit: GetBeneficiaryUnit;
+    getBeneficiaryUnit: BeneficiaryUnitBehaviour;
+    getHealthcareResult: HealthcareBehaviour;
+    //getAccommodationResult: AccommodationBehaviour;
     getWelfareResult(household: Household): WelfareResult;
 
 }
 
 // Behaviour that calculates beneficiary unit based on a household
-export interface GetBeneficiaryUnit {
+export interface BeneficiaryUnitBehaviour {
+    (household: Household): number;
+}
+
+export interface HealthcareBehaviour {
+    (household: Household): HealthcareResult;
+}
+
+export interface AccommodationBehaviour {
     (household: Household): number;
 }

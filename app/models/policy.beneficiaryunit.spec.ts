@@ -2,12 +2,12 @@
 
 import { Household, Age, Relationship, Flatshare } from './household';
 import {skos2016BeneficiaryUnitBehaviour} from './policy.beneficiaryunit';
-import {GetBeneficiaryUnit} from './policy.interfaces';
+import {BeneficiaryUnitBehaviour} from './policy.interfaces';
 
 describe('BeneficiaryUnit', () => {
 
     let h: Household;
-    let b: GetBeneficiaryUnit;
+    let b: BeneficiaryUnitBehaviour;
 
     beforeEach(function() {
         h = new Household();

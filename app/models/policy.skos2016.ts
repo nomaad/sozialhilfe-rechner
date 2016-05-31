@@ -1,8 +1,9 @@
 'use strict';
 
 import { Household, Age, Relationship } from './household';
-import {PolicyInterface, GetBeneficiaryUnit, WelfareResult} from './policy.interfaces';
+import {PolicyInterface, BeneficiaryUnitBehaviour, WelfareResult, HealthcareBehaviour} from './policy.interfaces';
 import {skos2016BeneficiaryUnitBehaviour} from './policy.beneficiaryunit';
+import {genericHealthcareBehaviour} from './policy.healthcare';
 
 // Implementation based on http://skos.ch/uploads/media/2016_SKOS-Richtlinien-komplett-d.pdf
 export class Skos2016Policy implements PolicyInterface {
@@ -15,7 +16,8 @@ export class Skos2016Policy implements PolicyInterface {
     assetLimitCouple: number;
     assetLimitChild: number;
     assetLimitTotal: number;
-    getBeneficiaryUnit: GetBeneficiaryUnit;
+    getBeneficiaryUnit: BeneficiaryUnitBehaviour;
+    getHealthcareResult: HealthcareBehaviour;
 
     constructor(){
         this.subsistence = [986, 1509, 1834, 2110, 2386, 2586, 2786, 2986, 3186, 3386];
@@ -24,6 +26,7 @@ export class Skos2016Policy implements PolicyInterface {
         this.assetLimitChild  = 2000;
         this.assetLimitTotal = 10000;
         this.getBeneficiaryUnit = skos2016BeneficiaryUnitBehaviour;
+        this.getHealthcareResult = genericHealthcareBehaviour;
     }
 
     public getWelfareResult(h: Household): WelfareResult {
@@ -39,10 +42,9 @@ export class Skos2016Policy implements PolicyInterface {
         r.allowableRent = Number(h.accommodation.rentValue);
 
         // TODO: move to behaviour
-        r.actualHealthcare = Number(h.healthcare.kvg);
-        r.allowableHealthcare = Number(h.healthcare.kvg);
+        r.healthcare = this.getHealthcareResult(h);
 
-        r.totalAllowableExpenses = Number(r.subsistence) + Number(r.allowableRent) + Number(r.allowableHealthcare);
+        r.totalAllowableExpenses = Number(r.subsistence) + Number(r.allowableRent) + Number(r.healthcare.allowableHealthcare);
 
         r.jobIncome = Number(h.income.jobIncomeValue);
         r.socialIncome = Number(h.income.socialIncomeValue);

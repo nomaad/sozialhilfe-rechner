@@ -1,7 +1,7 @@
 'use strict';
 
 import { Household, Age, Relationship } from './household';
-import {GetBeneficiaryUnit} from './policy.interfaces';
+import {BeneficiaryUnitBehaviour} from './policy.interfaces';
 
 let skos2016BeneficiaryUnitBehaviour = function(h: Household): number {
     if(h.adults == 1) {
