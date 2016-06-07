@@ -10,7 +10,6 @@ import {MessagePage} from "../message/message";
 })
 export class HealthcarePage {
   household: Household;
-  policy: PolicyInterface;
 
   static get parameters() {
     return [[NavController], [CaseService]];

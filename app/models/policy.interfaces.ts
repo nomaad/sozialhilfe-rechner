@@ -5,7 +5,7 @@ import { Household, Age, Relationship } from './household';
 export class WelfareResult {
 
     constructor(){
-        this.healthcare = new HealthcareResult();
+        //this.healthcare = new HealthcareResult();
     }
 
     householdSize: number;
