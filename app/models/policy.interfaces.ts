@@ -27,10 +27,18 @@ export class WelfareResult {
 }
 
 export class HealthcareResult{
+
     actualHealthcare: number;
     allowableHealthcare: number;
+    kvgLimitAdults: number;
+    kvgLimitKids: number;
     message: string;
     exceeded: boolean;
+    
+    constructor(kvgLimitAdults, kvgLimitKids){
+        this.kvgLimitAdults = kvgLimitAdults;
+        this.kvgLimitKids= kvgLimitKids;
+    }
 }
 
 // A policy contains rules that are applied to a case (policy = SKOS-Richtlinien)

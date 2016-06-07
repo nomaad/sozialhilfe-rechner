@@ -1,0 +1,20 @@
+<ion-navbar *navbar dark>
+  <ion-title>{{m.title}}</ion-title>
+</ion-navbar>
+
+<ion-content padding>
+    <form>
+        <div class="block-message">
+            <div>
+                <p>
+                    {{m.message}}
+                </p>
+            </div>
+        </div>
+
+        <p>
+        <button full round large favorite (click)="next($event)">Weiter</button>
+        </p>
+    </form>
+    <dumper></dumper>
+</ion-content>

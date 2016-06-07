@@ -4,8 +4,8 @@ import { Household, Age, Relationship } from './household';
 import {HealthcareResult} from './policy.interfaces';
 
 let genericHealthcareBehaviour = function(h: Household): HealthcareResult {
-    let r = new HealthcareResult();
-    r.allowableHealthcare = h.adults * 400 + h.kids * 100;
+    let r = new HealthcareResult(400, 100);
+    r.allowableHealthcare = h.adults * r.kvgLimitAdults + h.kids * r.kvgLimitKids;
     r.actualHealthcare = h.healthcare.kvg;
 
     if(r.allowableHealthcare > r.actualHealthcare){
