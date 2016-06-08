@@ -20,7 +20,7 @@ export class ResultPage {
   constructor(private nav: NavController, private caseService: CaseService){
     this.nav = nav;
     this.household = caseService.getHousehold();
-    this.policy = new Skos2016Policy();
+    this.policy = caseService.getPolicy();
     this.result = this.policy.getWelfareResult(this.household);
   }
 

@@ -6,7 +6,7 @@ import {AccommodationPage} from '../accommodation/accommodation';
 import {PolicyInterface, HealthcareResult} from "../../models/policy.interfaces";
 
 @Component({
-  templateUrl: 'build/pages/healthcare/message.html',
+  templateUrl: 'build/pages/message/message.html',
 })
 export class MessagePage {
   household: Household;

@@ -73,6 +73,7 @@
     "karma": "gulp --gulpfile test/gulpfile.ts --cwd ./ karma-debug",
     "postinstall": "ionic state restore && typings install && webdriver-manager update && cp test/karma-static/*.html node_modules/karma/static",
     "start": "ionic serve",
+    "c9": "ionic serve -p $PORT --nolivereload",
     "test": "gulp --gulpfile test/gulpfile.ts --cwd ./ unit-test"
   },
   "repository": {

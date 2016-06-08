@@ -11,15 +11,16 @@ import {MessagePage} from "../message/message";
 })
 export class HealthcarePage {
   household: Household;
-
+  policy: PolicyInterface;
+  
   static get parameters() {
     return [[NavController], [CaseService]];
   }
 
-  constructor(private nav: NavController, private caseService: CaseService, private policy: PolicyInterface){
+  constructor(private nav: NavController, private caseService: CaseService){
     this.nav = nav;
     this.household = caseService.getHousehold();
-    this.policy = policy;
+    this.policy = caseService.getPolicy();
   }
 
   next(event) {
