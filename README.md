@@ -1,7 +1,7 @@
 ##Sozialhilfe Rechner
 [![Build Status](https://api.travis-ci.com/nomaad/sozialhilfe-rechner.svg?token=fgEBVqi8zNcyppeyHVrN)](https://travis-ci.com/nomaad/sozialhilfe-rechner) [![codecov](https://codecov.io/gh/nomaad/sozialhilfe-rechner/branch/master/graph/badge.svg?token=XqBcQDwJHt)](https://codecov.io/gh/nomaad/sozialhilfe-rechner)
 
-Ionic 2 Project based on https://github.com/lathonez/clicker/commit/5ac11b57de6e20d17cff860d845a13c328af86e9
+Ionic 2 Project based on https://github.com/lathonez/clicker
 
 ## Install & Start
 
