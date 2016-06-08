@@ -1,9 +1,10 @@
-import {Page, NavController} from 'ionic-angular';
+import {Component} from '@angular/core';
+import {NavController} from 'ionic-angular';
 import {IncomePage} from '../income/income';
 import {CaseService} from '../../services/case.service.ts';
 import {Household} from '../../models/household.ts';
 
-@Page({
+@Component({
   templateUrl: 'build/pages/household/household.html',
 })
 export class HouseholdPage {

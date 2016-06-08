@@ -1,10 +1,11 @@
-import {Page, NavController} from 'ionic-angular';
+import {Component} from '@angular/core';
+import {NavController} from 'ionic-angular';
 import {CaseService} from '../../services/case.service.ts';
 import {Household} from '../../models/household.ts';
 import {Skos2016Policy} from "../../models/policy.skos2016";
 import {PolicyInterface, WelfareResult} from "../../models/policy.interfaces";
 
-@Page({
+@Component({
   templateUrl: 'build/pages/result/result.html',
 })
 export class ResultPage {

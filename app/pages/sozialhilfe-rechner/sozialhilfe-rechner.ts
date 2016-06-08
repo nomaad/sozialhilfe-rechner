@@ -1,9 +1,10 @@
-import {Page, NavController} from 'ionic-angular';
+import {Component} from '@angular/core';
+import {NavController} from 'ionic-angular';
 import {HouseholdPage} from '../household/household';
 import {ResultPage} from '../result/result';
 
 
-@Page({
+@Component({
   templateUrl: 'build/pages/sozialhilfe-rechner/sozialhilfe-rechner.html'
 })
 export class SozialhilfeRechnerPage {

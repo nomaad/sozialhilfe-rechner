@@ -1,19 +1,19 @@
 'use strict';
 
-import { Type, ViewChild }                    from '@angular/core';
-import { App, Platform, MenuController, Nav } from 'ionic-angular';
-import { StatusBar }                          from 'ionic-native';
-import { SozialhilfeRechnerPage }             from './pages/sozialhilfe-rechner/sozialhilfe-rechner';
-import { ListPage }                           from './pages/list/list';
-import { ClickerList }                        from './pages/clickerList/clickerList';
-import { Page2 }                              from './pages/page2/page2';
-import { CaseService }                        from './services/case.service.ts';
-import { Dumper }                             from './components/dumper/dumper';
-import {ResultPage} from "./pages/result/result";
+import { Component, Type, ViewChild }                     from '@angular/core';
+import { Platform, ionicBootstrap, MenuController, Nav }  from 'ionic-angular';
+import { StatusBar }                                      from 'ionic-native';
+import { SozialhilfeRechnerPage }                         from './pages/sozialhilfe-rechner/sozialhilfe-rechner';
+import { ListPage }                                       from './pages/list/list';
+import { ClickerList }                                    from './pages/clickerList/clickerList';
+import { Page2 }                                          from './pages/page2/page2';
+import { CaseService }                                    from './services/case.service.ts';
+import { Dumper }                                         from './components/dumper/dumper';
+import {ResultPage}                                       from "./pages/result/result";
 
-@App({
+@Component({
   templateUrl: 'build/app.html',
-  config: {}, // http://ionicframework.com/docs/v2/api/config/Config/
+  //TODO: Remove? config: {}, // http://ionicframework.com/docs/v2/api/config/Config/
   providers: [CaseService],
   directives: [Dumper],
   queries: {
@@ -61,3 +61,10 @@ export class MyApp {
     this.nav.setRoot(page.component);
   };
 }
+
+// Pass the main app component as the first argument
+// Pass any providers for your app in the second argument
+// Set any config for your app as the third argument:
+// http://ionicframework.com/docs/v2/api/config/Config/
+
+ionicBootstrap(MyApp, [], {});

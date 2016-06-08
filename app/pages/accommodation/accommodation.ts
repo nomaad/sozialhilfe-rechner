@@ -1,9 +1,10 @@
-import {Page, NavController} from 'ionic-angular';
+import {Component} from '@angular/core';
+import {NavController} from 'ionic-angular';
 import {CaseService} from '../../services/case.service.ts';
 import {Household} from '../../models/household.ts';
 import {ResultPage} from "../result/result";
 
-@Page({
+@Component({
   templateUrl: 'build/pages/accommodation/accommodation.html',
 })
 export class AccommodationPage {
