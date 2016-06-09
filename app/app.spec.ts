@@ -38,8 +38,8 @@ describe('ClickerApp', () => {
     clickerApp = new MyApp(mockClass, mockClass);
   });
 
-  it('initialises with 4 possible pages', () => {
-    expect(clickerApp['pages'].length).toEqual(4);
+  it('initialises with 5 possible pages', () => {
+    expect(clickerApp['pages'].length).toEqual(5);
   });
 
   it('initialises with a root page', () => {

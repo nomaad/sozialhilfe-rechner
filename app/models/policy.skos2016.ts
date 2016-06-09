@@ -3,7 +3,7 @@
 import { Household, Age, Relationship } from './household';
 import {PolicyInterface, BeneficiaryUnitBehaviour, WelfareResult, HealthcareBehaviour} from './policy.interfaces';
 import {skos2016BeneficiaryUnitBehaviour} from './policy.beneficiaryunit';
-import {genericHealthcareBehaviour} from './policy.healthcare';
+import {healthcareBehaviourBernCity} from './policy.healthcare';
 
 // Implementation based on http://skos.ch/uploads/media/2016_SKOS-Richtlinien-komplett-d.pdf
 export class Skos2016Policy implements PolicyInterface {
@@ -26,7 +26,7 @@ export class Skos2016Policy implements PolicyInterface {
         this.assetLimitChild  = 2000;
         this.assetLimitTotal = 10000;
         this.getBeneficiaryUnit = skos2016BeneficiaryUnitBehaviour;
-        this.getHealthcareResult = genericHealthcareBehaviour;
+        this.getHealthcareResult = healthcareBehaviourBernCity;
     }
 
     public getWelfareResult(h: Household): WelfareResult {
