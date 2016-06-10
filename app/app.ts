@@ -67,4 +67,11 @@ export class MyApp {
 // Set any config for your app as the third argument:
 // http://ionicframework.com/docs/v2/api/config/Config/
 
-ionicBootstrap(MyApp, [], {});
+ionicBootstrap(MyApp, [], 
+  {
+    platforms: {
+      ios: {
+        statusbarPadding: true
+      }
+    }
+  });
