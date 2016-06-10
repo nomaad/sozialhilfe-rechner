@@ -13,7 +13,6 @@ import {ResultPage}                                       from "./pages/result/r
 
 @Component({
   templateUrl: 'build/app.html',
-  //TODO: Remove? config: {}, // http://ionicframework.com/docs/v2/api/config/Config/
   providers: [CaseService],
   directives: [Dumper],
   queries: {
