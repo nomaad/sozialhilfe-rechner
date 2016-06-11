@@ -1,9 +1,10 @@
 'use strict';
 
 import { Household, Age, Relationship } from './household';
-import {PolicyInterface, BeneficiaryUnitBehaviour, WelfareResult, HealthcareBehaviour} from './policy.interfaces';
+import {PolicyInterface, BeneficiaryUnitBehaviour, WelfareResult, HealthcareBehaviour, AccommodationBehaviour} from './policy.interfaces';
 import {skos2016BeneficiaryUnitBehaviour} from './policy.beneficiaryunit';
 import {healthcareBehaviourBernCity} from './policy.healthcare';
+import {accommodationBehaviourBernCity} from './policy.accommodation';
 
 // Implementation based on http://skos.ch/uploads/media/2016_SKOS-Richtlinien-komplett-d.pdf
 export class Skos2016Policy implements PolicyInterface {
@@ -18,6 +19,7 @@ export class Skos2016Policy implements PolicyInterface {
     assetLimitTotal: number;
     getBeneficiaryUnit: BeneficiaryUnitBehaviour;
     getHealthcareResult: HealthcareBehaviour;
+    getAccommodationResult: AccommodationBehaviour;
 
     constructor(){
         this.subsistence = [986, 1509, 1834, 2110, 2386, 2586, 2786, 2986, 3186, 3386];
@@ -27,6 +29,7 @@ export class Skos2016Policy implements PolicyInterface {
         this.assetLimitTotal = 10000;
         this.getBeneficiaryUnit = skos2016BeneficiaryUnitBehaviour;
         this.getHealthcareResult = healthcareBehaviourBernCity;
+        this.getAccommodationResult = accommodationBehaviourBernCity;
     }
 
     public getWelfareResult(h: Household): WelfareResult {
@@ -56,6 +59,7 @@ export class Skos2016Policy implements PolicyInterface {
         return r;
     }
 
+    //TODO: move to behaviour
     private getSubsistence(h: Household): number {
         if(h.age > Age.Age18to25) {
             return this.subsistence[this.getBeneficiaryUnit(h) - 1];

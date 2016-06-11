@@ -3,7 +3,7 @@
 import { Household, Age, Relationship } from './household';
 import {HealthcareResult} from './policy.interfaces';
 
-// GED 2016
+// GEF 2016
 let healthcareBehaviourBernCity = function(h: Household): HealthcareResult {
     
     // TODO: Implement different regions for canton Bern

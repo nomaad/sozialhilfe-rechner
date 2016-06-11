@@ -2,6 +2,7 @@
 
 import { Household, Age, Relationship } from './household';
 
+//TODO: move to own file
 export class WelfareResult {
 
     constructor(){
@@ -26,6 +27,7 @@ export class WelfareResult {
     eligible: boolean;
 }
 
+//TODO: move to own file
 export class HealthcareResult{
 
     actualHealthcare: number;
@@ -33,6 +35,15 @@ export class HealthcareResult{
     
     // TODO: message should probably not be needed here..
     message: string;
+    exceeded: boolean;
+    
+}
+
+//TODO: move to own file
+export class AccommodationResult{
+
+    actualRent: number;
+    allowableRent: number;
     exceeded: boolean;
     
 }
@@ -51,7 +62,7 @@ export interface PolicyInterface {
 
     getBeneficiaryUnit: BeneficiaryUnitBehaviour;
     getHealthcareResult: HealthcareBehaviour;
-    //getAccommodationResult: AccommodationBehaviour;
+    getAccommodationResult: AccommodationBehaviour;
     getWelfareResult(household: Household): WelfareResult;
 
 }
@@ -66,5 +77,5 @@ export interface HealthcareBehaviour {
 }
 
 export interface AccommodationBehaviour {
-    (household: Household): number;
+    (household: Household): AccommodationResult;
 }
